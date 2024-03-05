@@ -1,5 +1,6 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,11 +16,6 @@ public class BulletControllerPlayer : MonoBehaviour, IPoolable
         bulletPool = FindObjectOfType<ObjectPool>();
     }
 
-    void Update()
-    {
-        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, speed);
-    }
-    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
@@ -32,6 +28,11 @@ public class BulletControllerPlayer : MonoBehaviour, IPoolable
                 bulletPool.Release(this);
             }
         }
+    }
+    
+    void Update()
+    {
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, speed);
     }
 
     public void OnRelease()

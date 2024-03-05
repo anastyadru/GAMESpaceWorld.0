@@ -1,5 +1,6 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,15 +20,7 @@ public class BonusManager : MonoBehaviour
     {
         UpdateBonusText();
     }
-    
-    void Update()
-    {
-        if (bonus == 100)
-        {
-            UseBonus();
-        }
-    }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("lazerShot"))
@@ -37,6 +30,14 @@ public class BonusManager : MonoBehaviour
                 bonus += 2;
                 UpdateBonusText();
             }
+        }
+    }
+    
+    void Update()
+    {
+        if (bonus == 100)
+        {
+            UseBonus();
         }
     }
     
