@@ -1,5 +1,6 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class ScoreManager : MonoBehaviour
     public float highscore = 0f;
     private string highScoreKey = "HighScore";
 
-	void Start()
+    public void Start()
     {
         highscore = PlayerPrefs.GetFloat(highScoreKey, 0f);
         UpdateScoreText();

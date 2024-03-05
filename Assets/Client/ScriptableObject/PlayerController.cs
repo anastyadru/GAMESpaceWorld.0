@@ -1,5 +1,6 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public Transform lazerGun;
     private float nextShotTime;
 
-    void Update()
+    public void Update()
     {
         float mouseX = Input.GetAxis("Mouse X");
         Vector3 newPosition = transform.position + new Vector3(mouseX * speed * Time.deltaTime, 0, 0);
