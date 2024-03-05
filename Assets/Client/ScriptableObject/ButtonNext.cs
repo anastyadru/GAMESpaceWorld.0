@@ -1,5 +1,6 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class ButtonNext : MonoBehaviour
     public bool NextGame;
     private GameObject nextGameMenu;
     
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown("Next"))
         {

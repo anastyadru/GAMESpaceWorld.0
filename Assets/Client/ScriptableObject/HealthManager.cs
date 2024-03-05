@@ -1,5 +1,6 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,25 +13,25 @@ public class HealthManager : MonoBehaviour
     
     public float health = 100f;
 
-	void Start()
+    public void Start()
     {
         UpdateHealthText();
     }
 
-    void Update()
-    {
-        if (health <= 0)
-        {
-            EndGame();
-        }
-    }
-    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("lazerShot1"))
         {
             health -= 5;
             UpdateHealthText();
+        }
+    }
+    
+    public void Update()
+    {
+        if (health <= 0)
+        {
+            EndGame();
         }
     }
     

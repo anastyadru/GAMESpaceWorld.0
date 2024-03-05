@@ -1,5 +1,6 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,12 +26,18 @@ public class Enemy : MonoBehaviour, IPoolable
         bulletPool = FindObjectOfType<ObjectPool>();
     }
     
-    void Start()
+    public void Start()
     {
         GenerateNewTargetPosition();
     }
+
+    public void GenerateNewTargetPosition()
+    {
+        float randomX = Random.Range(-700f, 0f);
+        targetPosition = new Vector3(randomX, transform.position.y, transform.position.z);
+    }
     
-    void Update()
+    public void Update()
     {
         if (Vector3.Distance(transform.position, targetPosition) < 10f)
         {
@@ -44,14 +51,8 @@ public class Enemy : MonoBehaviour, IPoolable
             Shoot();
         }
     }
-
-    void GenerateNewTargetPosition()
-    {
-        float randomX = Random.Range(-700f, 0f);
-        targetPosition = new Vector3(randomX, transform.position.y, transform.position.z);
-    }
     
-    void Shoot()
+    public void Shoot()
     {
         BulletControllerEnemy bullet = bulletPool.Get<BulletControllerEnemy>();
         bullet.transform.position = lazerGun1.position;
