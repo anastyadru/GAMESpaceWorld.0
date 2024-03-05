@@ -30,7 +30,7 @@ public class BulletControllerPlayer : MonoBehaviour, IPoolable
         }
     }
     
-    void Update()
+    private void Update()
     {
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, speed);
     }

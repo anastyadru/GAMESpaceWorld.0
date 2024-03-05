@@ -16,7 +16,7 @@ public class BonusManager : MonoBehaviour
     public GameObject lazerShot;
     public Transform lazerGun;
     
-    void Start()
+    public void Start()
     {
         UpdateBonusText();
     }
@@ -33,7 +33,7 @@ public class BonusManager : MonoBehaviour
         }
     }
     
-    void Update()
+    private void Update()
     {
         if (bonus == 100)
         {
