@@ -34,26 +34,26 @@
         // windowStack = new Stack<BaseWindow>();
     // }
 
-    public void Open(WindowID windowID)
-    {
-        BaseWindow window = GetWindow(windowID);
-        if (window != null)
-        {
-            window.gameObject.SetActive(true);
-            window.OnOpened();
-            windowStack.Push(window);
-        }
-    }
+    // public void Open(WindowID windowID)
+    // {
+        // BaseWindow window = GetWindow(windowID);
+        // if (window != null)
+        // {
+            // window.gameObject.SetActive(true);
+            // window.OnOpened();
+            // windowStack.Push(window);
+        // }
+    // }
 
-    public void CloseLast()
-    {
-        if (windowStack.Count > 0)
-        {
-            BaseWindow window = windowStack.Pop();
-            window.OnClosed();
-            window.gameObject.SetActive(false);
-        }
-    }
+    // public void CloseLast()
+    // {
+        // if (windowStack.Count > 0)
+        // {
+            // BaseWindow window = windowStack.Pop();
+            // window.OnClosed();
+            // window.gameObject.SetActive(false);
+        // }
+    // }
 
     private BaseWindow GetWindow(WindowID windowID)
     {
