@@ -1,38 +1,38 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+// using System;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
 
-public class WindowManager : MonoBehaviour
-{
-    private static WindowManager instance;
+// public class WindowManager : MonoBehaviour
+// {
+    // private static WindowManager instance;
     
-    private Stack<BaseWindow> windowStack = new Stack<BaseWindow>();
+    // private Stack<BaseWindow> windowStack = new Stack<BaseWindow>();
     
-    public static WindowManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<WindowManager>();
-                if (instance == null)
-                {
-                    GameObject container = new GameObject("WindowManager");
-                    instance = container.AddComponent<WindowManager>();
-                }
-            }
+    // public static WindowManager Instance
+    // {
+        // get
+        // {
+            // if (instance == null)
+            // {
+                // instance = FindObjectOfType<WindowManager>();
+                // if (instance == null)
+                // {
+                    // GameObject container = new GameObject("WindowManager");
+                    // instance = container.AddComponent<WindowManager>();
+                // }
+            // }
             
-            return instance;
-        }
-    }
+            // return instance;
+        // }
+    // }
 
-    private void Awake()
-    {
-        windowStack = new Stack<BaseWindow>();
-    }
+    // private void Awake()
+    // {
+        // windowStack = new Stack<BaseWindow>();
+    // }
 
     public void Open(WindowID windowID)
     {
