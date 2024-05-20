@@ -11,14 +11,14 @@ public class BulletControllerEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerController"))
         {
-            Player player = other.GetComponent<Player>();
+            Player player = other.GetComponent<PlayerController>();
             player.health -= 5;
             if (player.health <= 0)
             {
                 player.OnRelease();
-                bulletPool.Release(this);
+                gameObject.SetActive(false);
             }
         }
     }
@@ -26,10 +26,5 @@ public class BulletControllerEnemy : MonoBehaviour
     public void Update()
     {
         transform.Translate(Vector3.back * speed * Time.deltaTime);
-    }
-
-    public void OnRelease()
-    {
-        gameObject.SetActive(false);
     }
 }
