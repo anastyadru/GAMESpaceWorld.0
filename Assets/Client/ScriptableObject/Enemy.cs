@@ -1,41 +1,41 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
-// using System;
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-// public class Enemy : MonoBehaviour // IPoolable
-// {
-    // private float speed = 250f;
-    // private float smoothness = 3f;
-    // private float projectileSpeedMultiplier = 1.05f;
+public class Enemy : MonoBehaviour // IPoolable
+{
+    private float speed = 250f;
+    private float smoothness = 3f;
+    private float projectileSpeedMultiplier = 1.05f;
 
-    // private Vector3 targetPosition;
+    private Vector3 targetPosition;
     
-    // public GameObject lazerShot1;
-    // public Transform lazerGun1;
-    // private float nextShotTime;
+    public GameObject lazerShot1;
+    public Transform lazerGun1;
+    private float nextShotTime;
     
-    // public int health;
+    public int health;
     
-    // private ObjectPool bulletPool;
+    private ObjectPool bulletPool;
     
-    // private void Awake()
-    // {
-        // bulletPool = FindObjectOfType<ObjectPool>();
-    // }
+    private void Awake()
+    {
+        bulletPool = FindObjectOfType<ObjectPool>();
+    }
     
-    // public void Start()
-    // {
-        // GenerateNewTargetPosition();
-    // }
+    public void Start()
+    {
+        GenerateNewTargetPosition();
+    }
 
-    // public void GenerateNewTargetPosition()
-    // {
-        // float randomX = Random.Range(-700f, 0f);
-        // targetPosition = new Vector3(randomX, transform.position.y, transform.position.z);
-    // }
+    public void GenerateNewTargetPosition()
+    {
+        float randomX = Random.Range(-700f, 0f);
+        targetPosition = new Vector3(randomX, transform.position.y, transform.position.z);
+    }
     
     // public void Update()
     // {
