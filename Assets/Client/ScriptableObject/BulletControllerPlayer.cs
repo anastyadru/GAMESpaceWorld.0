@@ -11,10 +11,10 @@ public class BulletControllerPlayer : MonoBehaviour // IPoolable
     
     // private ObjectPool bulletPool;
 
-    private void Awake()
-    {
-        bulletPool = FindObjectOfType<ObjectPool>();
-    }
+    // rivate void Awake()
+    // {
+        // bulletPool = FindObjectOfType<ObjectPool>();
+    // }
 
     private void OnTriggerEnter(Collider other)
     {
