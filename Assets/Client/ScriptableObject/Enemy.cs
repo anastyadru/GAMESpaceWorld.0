@@ -26,42 +26,42 @@
         // bulletPool = FindObjectOfType<ObjectPool>();
     // }
     
-    public void Start()
-    {
-        GenerateNewTargetPosition();
-    }
+    // public void Start()
+    // {
+        // GenerateNewTargetPosition();
+    // }
 
-    public void GenerateNewTargetPosition()
-    {
-        float randomX = Random.Range(-700f, 0f);
-        targetPosition = new Vector3(randomX, transform.position.y, transform.position.z);
-    }
+    // public void GenerateNewTargetPosition()
+    // {
+        // float randomX = Random.Range(-700f, 0f);
+        // targetPosition = new Vector3(randomX, transform.position.y, transform.position.z);
+    // }
     
-    public void Update()
-    {
-        if (Vector3.Distance(transform.position, targetPosition) < 10f)
-        {
-            GenerateNewTargetPosition();
-        }
+    // public void Update()
+    // {
+        // if (Vector3.Distance(transform.position, targetPosition) < 10f)
+        // {
+            // GenerateNewTargetPosition();
+        // }
 
-        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothness * Time.deltaTime);
+        // transform.position = Vector3.Lerp(transform.position, targetPosition, smoothness * Time.deltaTime);
         
-        if (Time.time > nextShotTime)
-        {
-            Shoot();
-        }
-    }
+        // if (Time.time > nextShotTime)
+        // {
+            // Shoot();
+        // }
+    // }
     
-    public void Shoot()
-    {
-        BulletControllerEnemy bullet = bulletPool.Get<BulletControllerEnemy>();
-        bullet.transform.position = lazerGun1.position;
-        bullet.gameObject.SetActive(true);
-        nextShotTime = Time.time + 5f;
-    }
+    // public void Shoot()
+    // {
+        // BulletControllerEnemy bullet = bulletPool.Get<BulletControllerEnemy>();
+        // bullet.transform.position = lazerGun1.position;
+        // bullet.gameObject.SetActive(true);
+        // nextShotTime = Time.time + 5f;
+    // }
     
-    public void OnRelease()
-    {
-        gameObject.SetActive(false);
-    }
-}
+    // public void OnRelease()
+    // {
+        // gameObject.SetActive(false);
+    // }
+// }
