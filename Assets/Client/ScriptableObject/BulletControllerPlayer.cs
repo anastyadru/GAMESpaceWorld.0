@@ -11,7 +11,7 @@ public class BulletControllerPlayer : MonoBehaviour // IPoolable
     
     private ObjectPool bulletPool;
 
-    rivate void Awake()
+    private void Awake()
     {
         bulletPool = FindObjectOfType<ObjectPool>();
     }

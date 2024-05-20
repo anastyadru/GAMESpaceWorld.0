@@ -18,14 +18,7 @@ public class Enemy : MonoBehaviour // IPoolable
     private float nextShotTime;
     
     public int health;
-    
-    private ObjectPool bulletPool;
-    
-    private void Awake()
-    {
-        bulletPool = FindObjectOfType<ObjectPool>();
-    }
-    
+
     public void Start()
     {
         GenerateNewTargetPosition();
@@ -54,14 +47,9 @@ public class Enemy : MonoBehaviour // IPoolable
     
     public void Shoot()
     {
-        BulletControllerEnemy bullet = bulletPool.Get<BulletControllerEnemy>();
-        bullet.transform.position = lazerGun1.position;
-        bullet.gameObject.SetActive(true);
+        GameObject bullet = Instantiate(lazerShot1, lazerGun1.position, Quaternion.identity);
+        BulletControllerEnemy bulletController = bullet.GetComponent<BulletControllerEnemy>();
+        bulletController.SetSpeedMultiplier(projectileSpeedMultiplier);
         nextShotTime = Time.time + 5f;
-    }
-    
-    public void OnRelease()
-    {
-        gameObject.SetActive(false);
     }
 }
