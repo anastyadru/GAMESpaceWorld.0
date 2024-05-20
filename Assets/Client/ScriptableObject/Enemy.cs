@@ -21,10 +21,10 @@ public class Enemy : MonoBehaviour // IPoolable
     
     // private ObjectPool bulletPool;
     
-    private void Awake()
-    {
-        bulletPool = FindObjectOfType<ObjectPool>();
-    }
+    // private void Awake()
+    // {
+        // bulletPool = FindObjectOfType<ObjectPool>();
+    // }
     
     public void Start()
     {
