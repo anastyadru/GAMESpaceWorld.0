@@ -9,12 +9,12 @@ public class BulletControllerPlayer : MonoBehaviour // IPoolable
 {
     public float speed = 100;
     
-    // private ObjectPool bulletPool;
+    private ObjectPool bulletPool;
 
-    // rivate void Awake()
-    // {
-        // bulletPool = FindObjectOfType<ObjectPool>();
-    // }
+    rivate void Awake()
+    {
+        bulletPool = FindObjectOfType<ObjectPool>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,7 +25,7 @@ public class BulletControllerPlayer : MonoBehaviour // IPoolable
             if (enemy.health <= 0)
             {
                 enemy.OnRelease();
-                // bulletPool.Release(this);
+                bulletPool.Release(this);
             }
         }
     }
