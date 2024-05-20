@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour // IPoolable
+public class Enemy : MonoBehaviour
 {
     private float speed = 250f;
     private float smoothness = 3f;
