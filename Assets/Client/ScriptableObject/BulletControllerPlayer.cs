@@ -5,9 +5,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletControllerPlayer : MonoBehaviour
+public class BulletControllerPlayer : MonoBehaviour // IPoolable
 {
     public float speed = 100;
+    
+    private ObjectPool bulletPool;
+
+    private void Awake()
+    {
+        bulletPool = FindObjectOfType<ObjectPool>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
