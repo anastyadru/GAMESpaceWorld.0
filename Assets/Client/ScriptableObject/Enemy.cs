@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     private float speed = 250f;
     private float smoothness = 3f;
     private float projectileSpeedMultiplier = 1.05f;
+    
+    public int health = 100;
 
     private Vector3 targetPosition;
     
@@ -51,5 +53,10 @@ public class Enemy : MonoBehaviour
         BulletControllerEnemy bulletController = bullet.GetComponent<BulletControllerEnemy>();
         bulletController.SetSpeedMultiplier(projectileSpeedMultiplier);
         nextShotTime = Time.time + 5f;
+    }
+    
+    public void OnRelease()
+    {
+        // Действия при уничтожении врага
     }
 }
