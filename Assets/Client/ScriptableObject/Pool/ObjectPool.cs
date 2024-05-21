@@ -54,9 +54,9 @@ public class ObjectPool : MonoBehaviour
 
     public void Release<T>(T poolableObject) where T : MonoBehaviour, IPoolable
     {
-        if (poolDictionary.ContainsKey(T))
+        if (poolDictionary.ContainsKey(typeof(T)))
         {
-            Queue<MonoBehaviour> objectPool = poolDictionary[T];
+            Queue<MonoBehaviour> objectPool = poolDictionary[typeof(T)];
             objectPool.Enqueue(poolableObject);
             poolableObject.OnRelease();
         }
