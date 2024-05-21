@@ -4,12 +4,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class BulletControllerEnemy : MonoBehaviour
+public class BulletControllerEnemy : MonoBehaviour // IPoolable
 {
     public float speed = 100;
+    
+    private ObjectPool bulletPool;
+
+    private void Awake()
+    {
+        bulletPool = FindObjectOfType<ObjectPool>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,7 +25,7 @@ public class BulletControllerEnemy : MonoBehaviour
             if (player.health <= 0)
             {
                 player.OnRelease();
-                gameObject.SetActive(false);
+                bulletPool.Release(this);
             }
         }
     }
@@ -28,5 +33,10 @@ public class BulletControllerEnemy : MonoBehaviour
     public void Update()
     {
         transform.Translate(Vector3.back * speed * Time.deltaTime);
+    }
+
+    public void OnRelease()
+    {
+        gameObject.SetActive(false);
     }
 }
