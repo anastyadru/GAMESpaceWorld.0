@@ -1,5 +1,9 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
+public BulletControllerPlayer bulletPrefabPlayer;
+public BulletControllerEnemy bulletPrefabEnemy;
+public Enemy PrefabEnemy;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
