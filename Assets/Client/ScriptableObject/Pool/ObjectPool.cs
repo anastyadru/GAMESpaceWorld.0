@@ -18,43 +18,43 @@ public class ObjectPool : MonoBehaviour
 
     public void PrePool<T>(T prefab, int count) where T : MonoBehaviour, IPoolable
     {
-        // if (!poolDictionary.ContainsKey(prefab))
-        // {
-            // Queue<MonoBehaviour> objectPool = new Queue<MonoBehaviour>();
-            // for (int i = 0; i < count; i++)
-            // {
-                // T obj = GameObject.Instantiate(prefab);
-                // obj.gameObject.SetActive(false);
-                // objectPool.Enqueue(obj);
-            // }
+        if (!poolDictionary.ContainsKey(prefab))
+        {
+            Queue<MonoBehaviour> objectPool = new Queue<MonoBehaviour>();
+            for (int i = 0; i < count; i++)
+            {
+                T obj = GameObject.Instantiate(prefab);
+                obj.gameObject.SetActive(false);
+                objectPool.Enqueue(obj);
+            }
 
-            // poolDictionary.Add(prefab, objectPool);
-        // }
-    // }
+            poolDictionary.Add(prefab, objectPool);
+        }
+    }
 
-    // public T Get<T>() where T : MonoBehaviour, IPoolable
-    // {
-        // if (poolDictionary.ContainsKey(T))
-        // {
-            // Queue<MonoBehaviour> objectPool = poolDictionary[T];
-            // if (objectPool.Count > 0)
-            // {
-                // T obj = objectPool.Dequeue();
-                // obj.gameObject.SetActive(true);
-                // return obj;
-            // }
-        // }
+    public T Get<T>() where T : MonoBehaviour, IPoolable
+    {
+        if (poolDictionary.ContainsKey(T))
+        {
+            Queue<MonoBehaviour> objectPool = poolDictionary[T];
+            if (objectPool.Count > 0)
+            {
+                T obj = objectPool.Dequeue();
+                obj.gameObject.SetActive(true);
+                return obj;
+            }
+        }
 
-        // return null;
-    // }
+        return null;
+    }
 
-    // public void Release<T>(T poolableObject) where T : MonoBehaviour, IPoolable
-    // {
-        // if (poolDictionary.ContainsKey(T))
-        // {
-            // Queue<MonoBehaviour> objectPool = poolDictionary[T];
-            // objectPool.Enqueue(poolableObject);
-            // poolableObject.OnRelease();
-        // }
-    // }
-// }
+    public void Release<T>(T poolableObject) where T : MonoBehaviour, IPoolable
+    {
+        if (poolDictionary.ContainsKey(T))
+        {
+            Queue<MonoBehaviour> objectPool = poolDictionary[T];
+            objectPool.Enqueue(poolableObject);
+            poolableObject.OnRelease();
+        }
+    }
+}
