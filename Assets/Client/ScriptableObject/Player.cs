@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public GameObject lazerShot;
     public Transform lazerGun;
     private float nextShotTime;
+    
+    public int health = 100;
 
     public void Update()
     {
@@ -34,5 +36,10 @@ public class Player : MonoBehaviour
                 nextShotTime = Time.time + 0.2f;
             }
         }
+    }
+    
+    public void OnRelease()
+    {
+        // Действия при смерти игрока
     }
 }
