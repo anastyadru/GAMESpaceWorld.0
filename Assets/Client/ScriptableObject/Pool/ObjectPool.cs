@@ -27,7 +27,7 @@ public class ObjectPool : MonoBehaviour
             Queue<MonoBehaviour> objectPool = new Queue<MonoBehaviour>();
             for (int i = 0; i < count; i++)
             {
-                T obj = GameObject.Instantiate(prefab);
+                T obj = GameObject.Instantiate(prefab) as T;
                 obj.gameObject.SetActive(false);
                 objectPool.Enqueue(obj);
             }
@@ -38,12 +38,12 @@ public class ObjectPool : MonoBehaviour
 
     public T Get<T>() where T : MonoBehaviour, IPoolable
     {
-        if (poolDictionary.ContainsKey(T))
+        if (poolDictionary.ContainsKey(typeof(T)))
         {
-            Queue<MonoBehaviour> objectPool = poolDictionary[T];
+            Queue<MonoBehaviour> objectPool = poolDictionary[typeof(T)];
             if (objectPool.Count > 0)
             {
-                T obj = objectPool.Dequeue();
+                T obj = objectPool.Dequeue() as T;
                 obj.gameObject.SetActive(true);
                 return obj;
             }
