@@ -11,9 +11,9 @@ public class BulletControllerEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerController"))
+        if (other.CompareTag("Player"))
         {
-            Player player = other.GetComponent<PlayerController>();
+            Player player = other.GetComponent<Player>();
             player.health -= 5;
             if (player.health <= 0)
             {

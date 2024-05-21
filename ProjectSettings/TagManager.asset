@@ -17,6 +17,7 @@ TagManager:
   - Enemies
   - GameOverMenu
   - GameBaundary
+  - PlayerController
   layers:
   - Default
   - TransparentFX
