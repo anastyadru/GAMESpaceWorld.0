@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletControllerEnemy : MonoBehaviour // IPoolable
+public class BulletControllerEnemy : MonoBehaviour, IPoolable
 {
     public float speed = 100;
     
