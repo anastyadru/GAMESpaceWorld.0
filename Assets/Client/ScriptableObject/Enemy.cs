@@ -18,8 +18,6 @@ public class Enemy : MonoBehaviour
     public GameObject lazerShot1;
     public Transform lazerGun1;
     private float nextShotTime;
-    
-    public int health;
 
     public void Start()
     {
