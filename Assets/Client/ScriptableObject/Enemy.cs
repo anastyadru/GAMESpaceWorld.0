@@ -5,20 +5,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour // IPoolable
 {
     private float speed = 250f;
     private float smoothness = 3f;
     private float projectileSpeedMultiplier = 1.05f;
-    
-    public int health = 100;
 
     private Vector3 targetPosition;
     
     public GameObject lazerShot1;
     public Transform lazerGun1;
     private float nextShotTime;
-
+    
+    public int health;
+    
+    private ObjectPool bulletPool;
+    
+    private void Awake()
+    {
+        bulletPool = FindObjectOfType<ObjectPool>();
+    }
+    
     public void Start()
     {
         GenerateNewTargetPosition();
@@ -47,14 +54,14 @@ public class Enemy : MonoBehaviour
     
     public void Shoot()
     {
-        GameObject bullet = Instantiate(lazerShot1, lazerGun1.position, Quaternion.identity);
-        BulletControllerEnemy bulletController = bullet.GetComponent<BulletControllerEnemy>();
-        bulletController.SetSpeedMultiplier(projectileSpeedMultiplier);
+        BulletControllerEnemy bullet = bulletPool.Get<BulletControllerEnemy>();
+        bullet.transform.position = lazerGun1.position;
+        bullet.gameObject.SetActive(true);
         nextShotTime = Time.time + 5f;
     }
     
     public void OnRelease()
     {
-        // Действия при уничтожении врага
+        gameObject.SetActive(false);
     }
 }
