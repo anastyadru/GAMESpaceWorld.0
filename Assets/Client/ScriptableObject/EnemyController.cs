@@ -52,7 +52,7 @@ public class EnemyController : MonoBehaviour
         for (int i = 0; i < enemyCount; i++)
         {
             GameObject enemy = Instantiate(enemyPrefab, startPosition, transform.rotation);
-            float randomX = Random.Range(-100f, 100f);
+            float randomX = UnityEngine.Random.Range(-100f, 100f);
             enemy.transform.position += new Vector3(randomX, 0, 0);
             enemyHealth = enemy.GetComponent<HealthManagerEnemy>();
             enemyHealth.bar = bar;
