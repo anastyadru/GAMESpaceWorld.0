@@ -7,12 +7,11 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+    private Dictionary<Type, Queue<IPoolable>> poolDictionary = new Dictionary<Type, Queue<IPoolable>>();
     
-    public BulletControllerPlayer bulletPrefabPlayer;
-    public BulletControllerEnemy bulletPrefabEnemy;
-    public Enemy PrefabEnemy;
-    
-    private Dictionary<MonoBehaviour, Queue<MonoBehaviour>> poolDictionary = new Dictionary<MonoBehaviour, Queue<MonoBehaviour>>();
+    // public BulletControllerPlayer bulletPrefabPlayer;
+    // public BulletControllerEnemy bulletPrefabEnemy;
+    // public Enemy PrefabEnemy;
 
     public void Start()
     {
@@ -23,9 +22,10 @@ public class ObjectPool : MonoBehaviour
 
     public void PrePool<T>(T prefab, int count) where T : MonoBehaviour, IPoolable
     {
-        if (!poolDictionary.ContainsKey(prefab))
+        Type type = typeof(T);
+        if (!poolDictionary.ContainsKey(type))
         {
-            Queue<MonoBehaviour> objectPool = new Queue<MonoBehaviour>();
+            Queue<IPoolable> objectPool = new Queue<IPoolable>();
             for (int i = 0; i < count; i++)
             {
                 T obj = GameObject.Instantiate(prefab) as T;
@@ -33,7 +33,7 @@ public class ObjectPool : MonoBehaviour
                 objectPool.Enqueue(obj);
             }
 
-            poolDictionary.Add(prefab, objectPool);
+            poolDictionary.Add(type, objectPool);
         }
     }
 
