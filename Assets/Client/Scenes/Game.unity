@@ -4317,7 +4317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9aaa08cb2355142947ee2f820ef9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefabPlayer: {fileID: 0}
+  bulletPrefabPlayer: {fileID: 665375479, guid: e804b69cd4d3e6a4285c92db9ed34cf2, type: 3}
   bulletPrefabEnemy: {fileID: 0}
   PrefabEnemy: {fileID: 1193623656054736836, guid: 4575180d6a22e05488b414802068c65d, type: 3}
 --- !u!4 &1311034868
