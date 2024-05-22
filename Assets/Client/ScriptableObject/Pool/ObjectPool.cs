@@ -7,11 +7,11 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    private Dictionary<Type, Queue<IPoolable>> poolDictionary = new Dictionary<Type, Queue<IPoolable>>();
+    public BulletControllerPlayer bulletPrefabPlayer;
+    public BulletControllerEnemy bulletPrefabEnemy;
+    public Enemy PrefabEnemy;
     
-    // public BulletControllerPlayer bulletPrefabPlayer;
-    // public BulletControllerEnemy bulletPrefabEnemy;
-    // public Enemy PrefabEnemy;
+    private Dictionary<Type, Queue<IPoolable>> poolDictionary = new Dictionary<Type, Queue<IPoolable>>();
 
     public void Start()
     {
