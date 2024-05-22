@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour, IPoolable
 
     public void GenerateNewTargetPosition()
     {
-        float randomX = Random.Range(-700f, 0f);
+        float randomX = UnityEngine.Random.Range(-700f, 0f);
         targetPosition = new Vector3(randomX, transform.position.y, transform.position.z);
     }
     
