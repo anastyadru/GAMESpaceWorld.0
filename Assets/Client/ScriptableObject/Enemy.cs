@@ -24,6 +24,12 @@ public class Enemy : MonoBehaviour, IPoolable
     private void Awake()
     {
         bulletPool = FindObjectOfType<ObjectPool>();
+        
+        if (bulletPool == null)
+        {
+            GameObject objectPoolObject = new GameObject("ObjectPool");
+            bulletPool = objectPoolObject.AddComponent<ObjectPool>();
+        }
     }
     
     public void Start()
