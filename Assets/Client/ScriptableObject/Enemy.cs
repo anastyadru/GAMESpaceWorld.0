@@ -60,10 +60,16 @@ public class Enemy : MonoBehaviour, IPoolable
     
     public void Shoot()
     {
-        BulletControllerEnemy bullet = bulletPool.Get<BulletControllerEnemy>();
-        bullet.transform.position = lazerGun1.position;
-        bullet.gameObject.SetActive(true);
-        nextShotTime = Time.time + 5f;
+        if (bulletPool != null)
+        {
+            BulletControllerEnemy bullet = bulletPool.Get<BulletControllerEnemy>();
+            if (bullet != null)
+            {
+                bullet.transform.position = lazerGun1.position;
+                bullet.gameObject.SetActive(true);
+                nextShotTime = Time.time + 5f;
+            }
+        }
     }
     
     public void OnRelease()
