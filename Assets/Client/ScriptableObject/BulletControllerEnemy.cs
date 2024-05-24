@@ -32,7 +32,7 @@ public class BulletControllerEnemy : MonoBehaviour, IPoolable
     
     public void Update()
     {
-        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, speed);
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -speed);
     }
 
     public void OnRelease()
