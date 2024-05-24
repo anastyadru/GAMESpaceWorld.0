@@ -32,8 +32,7 @@ public class BulletControllerEnemy : MonoBehaviour, IPoolable
     
     public void Update()
     {
-        Vector3 direction = (playerTransform.position - transform.position).normalized;
-        transform.Translate(Vector3.back * speed * Time.deltaTime);
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, speed);
     }
 
     public void OnRelease()
