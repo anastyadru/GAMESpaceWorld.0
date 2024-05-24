@@ -10,12 +10,10 @@ public class BulletControllerEnemy : MonoBehaviour, IPoolable
     public float speed = 100;
     
     private ObjectPool bulletPool;
-    private Transform playerTransform;
 
     private void Awake()
     {
         bulletPool = FindObjectOfType<ObjectPool>();
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void OnTriggerEnter(Collider other)
