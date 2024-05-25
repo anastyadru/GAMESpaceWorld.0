@@ -31,14 +31,18 @@ public class BulletControllerEnemy : MonoBehaviour, IPoolable
         }
     }
     
+    public void OnHit()
+    {
+        OnRelease(); // Деактивируем пулю
+        bulletPool.Release(this); // Возвращаем пулю в пул для повторного использования
+    }
     public void Update()
     {
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -speed);
     }
 
-    public void OnHit()
+    public void OnRelease()
     {
-        OnRelease(); // Деактивируем пулю
-        bulletPool.Release(this); // Возвращаем пулю в пул для повторного использования
+        gameObject.SetActive(false);
     }
 }
