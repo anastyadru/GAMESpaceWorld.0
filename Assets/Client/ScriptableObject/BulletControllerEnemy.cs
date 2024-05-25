@@ -39,5 +39,6 @@ public class BulletControllerEnemy : MonoBehaviour, IPoolable
     public void OnRelease()
     {
         gameObject.SetActive(false);
+        bulletPool.ReturnObjectToPool(this.gameObject);
     }
 }
