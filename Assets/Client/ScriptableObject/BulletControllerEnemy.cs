@@ -29,6 +29,10 @@ public class BulletControllerEnemy : MonoBehaviour, IPoolable
             
             OnHit();
         }
+        else
+        {
+            OnRelease(); // Если пуля сталкивается с чем-то, кроме игрока, она возвращается в пул
+        }
     }
     
     public void OnHit()
