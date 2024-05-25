@@ -2029,8 +2029,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BonusText: {fileID: 1567527121}
   bonus: 0
-  lazerShot: {fileID: 2865661088691784645, guid: e804b69cd4d3e6a4285c92db9ed34cf2, type: 3}
-  lazerGun: {fileID: 1683373319}
+  lazerShot: {fileID: 1683373318}
+  lazerGun: {fileID: 2866936916054691463, guid: e804b69cd4d3e6a4285c92db9ed34cf2, type: 3}
 --- !u!114 &709502020
 MonoBehaviour:
   m_ObjectHideFlags: 0
