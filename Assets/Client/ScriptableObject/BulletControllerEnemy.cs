@@ -36,8 +36,9 @@ public class BulletControllerEnemy : MonoBehaviour, IPoolable
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -speed);
     }
 
-    public void OnRelease()
+    public void OnHit()
     {
-        gameObject.SetActive(false);
+        OnRelease(); // Деактивируем пулю
+        bulletPool.Release(this); // Возвращаем пулю в пул для повторного использования
     }
 }
