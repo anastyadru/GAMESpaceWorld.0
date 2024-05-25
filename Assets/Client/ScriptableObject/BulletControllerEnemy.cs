@@ -25,8 +25,9 @@ public class BulletControllerEnemy : MonoBehaviour, IPoolable
             if (player.health <= 0)
             {
                 player.OnRelease();
-                bulletPool.Release(this);
             }
+            
+            OnRelease();
         }
     }
     
