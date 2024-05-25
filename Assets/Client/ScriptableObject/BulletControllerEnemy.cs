@@ -27,7 +27,7 @@ public class BulletControllerEnemy : MonoBehaviour, IPoolable
                 player.OnRelease();
             }
             
-            OnRelease();
+            OnHit();
         }
     }
     
