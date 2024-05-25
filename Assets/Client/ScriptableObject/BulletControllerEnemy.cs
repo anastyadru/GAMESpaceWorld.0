@@ -33,8 +33,8 @@ public class BulletControllerEnemy : MonoBehaviour, IPoolable
     
     public void OnHit()
     {
-        OnRelease(); // Деактивируем пулю
-        bulletPool.Release(this); // Возвращаем пулю в пул для повторного использования
+        OnRelease();
+        bulletPool.Release(this);
     }
     public void Update()
     {
