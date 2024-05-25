@@ -23,13 +23,10 @@ public class BonusManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("lazerShot"))
+        if (other.CompareTag("Enemy"))
         {
-            if (other.GetComponent<Collider>().gameObject.CompareTag("Enemy"))
-            {
-                bonus += 2;
-                UpdateBonusText();
-            }
+            bonus += 5;
+            UpdateBonusText();
         }
     }
     
