@@ -13,13 +13,13 @@ public class BonusManager : MonoBehaviour
     
     public float bonus = 0f;
     
-    // public GameObject lazerShot;
-    // public Transform lazerGun;
+    public GameObject lazerShot;
+    public Transform lazerGun;
     
-    // public void Start()
-    // {
-        // UpdateBonusText();
-    // }
+    public void Start()
+    {
+        UpdateBonusText();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,7 +32,7 @@ public class BonusManager : MonoBehaviour
     
     private void Update()
     {
-        if (bonus >= 100)
+        if (bonus == 100)
         {
             UseBonus();
         }
@@ -47,9 +47,14 @@ public class BonusManager : MonoBehaviour
     {
         if (Input.GetButton("Fire2"))
         {
-            // Действия при использовании бонуса
-            bonus = 0; // Сброс бонусов после использования
-            UpdateBonusText();
+            if (lazerShot != null)
+            {
+                EnemyController enemy = lazerShot.GetComponent<EnemyController>();
+                if (enemy != null && enemy.fill >= 50)
+                {
+                    enemy.fill -= 50;
+                }
+            }
         }
     }
 }
