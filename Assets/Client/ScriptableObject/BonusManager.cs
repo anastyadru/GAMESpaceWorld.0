@@ -23,7 +23,7 @@ public class BonusManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("lazerShot") && other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             bonus += 5;
             UpdateBonusText();
