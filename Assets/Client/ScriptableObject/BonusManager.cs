@@ -13,17 +13,17 @@ public class BonusManager : MonoBehaviour
     
     public float bonus = 0f;
     
-    public GameObject lazerShot;
-    public Transform lazerGun;
+    // public GameObject lazerShot;
+    // public Transform lazerGun;
     
-    public void Start()
-    {
-        UpdateBonusText();
-    }
+    // public void Start()
+    // {
+        // UpdateBonusText();
+    // }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("lazerShot") && other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (other.CompareTag("BulletControllerPlayer Variant") && other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             bonus += 5;
             UpdateBonusText();
@@ -32,7 +32,7 @@ public class BonusManager : MonoBehaviour
     
     private void Update()
     {
-        if (bonus == 100)
+        if (bonus >= 100)
         {
             UseBonus();
         }
@@ -47,14 +47,9 @@ public class BonusManager : MonoBehaviour
     {
         if (Input.GetButton("Fire2"))
         {
-            if (lazerShot != null)
-            {
-                EnemyController enemy = lazerShot.GetComponent<EnemyController>();
-                if (enemy != null && enemy.fill >= 50)
-                {
-                    enemy.fill -= 50;
-                }
-            }
+            // Действия при использовании бонуса
+            bonus = 0; // Сброс бонусов после использования
+            UpdateBonusText();
         }
     }
 }
