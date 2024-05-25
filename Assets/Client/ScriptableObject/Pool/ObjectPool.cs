@@ -15,9 +15,9 @@ public class ObjectPool : MonoBehaviour
 
     public void Start()
     {
-        PrePool<BulletControllerPlayer>(bulletPrefabPlayer, 20);
-        PrePool<BulletControllerEnemy>(bulletPrefabEnemy, 10);
-        PrePool<Enemy>(PrefabEnemy, 10);
+        PrePool<BulletControllerPlayer>(bulletPrefabPlayer, 50);
+        PrePool<BulletControllerEnemy>(bulletPrefabEnemy, 50);
+        PrePool<Enemy>(PrefabEnemy, 30);
     }
 
     public void PrePool<T>(T prefab, int count) where T : MonoBehaviour, IPoolable
