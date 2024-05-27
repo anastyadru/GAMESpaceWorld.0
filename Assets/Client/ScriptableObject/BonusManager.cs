@@ -13,8 +13,10 @@ public class BonusManager : MonoBehaviour
     
     public float bonus = 0f;
     
-    public GameObject lazerShot;
-    public Transform lazerGun;
+    public GameObject lazerShot; // Префаб снаряда
+    public Transform lazerGun; // Позиция для выстрела
+    
+    private bool isUltimateReady = false;
     
     public void Start()
     {
