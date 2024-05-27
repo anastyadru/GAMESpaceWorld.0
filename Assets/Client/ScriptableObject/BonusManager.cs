@@ -52,15 +52,14 @@ public class BonusManager : MonoBehaviour
 
     private void UseUltimate()
     {
-        // Наносим урон всем врагам на карте
         EnemyController[] enemies = FindObjectsOfType<EnemyController>();
         foreach (EnemyController enemy in enemies)
         {
-            enemy.TakeDamage(2.5f * enemy.baseDamage); // Наносим урон в 250% от базового урона
+            enemy.TakeDamage(2.5f * enemy.baseDamage);
         }
         
-        bonus = 0; // Обнуляем бонусы после использования ультимейта
-        isUltimateReady = false; // Ультимейт больше не готов
-        UpdateBonusText(); // Обновляем текст бонусов
+        bonus = 0;
+        isUltimateReady = false;
+        UpdateBonusText();
     }
 }
