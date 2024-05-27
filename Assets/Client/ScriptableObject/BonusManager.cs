@@ -32,7 +32,7 @@ public class BonusManager : MonoBehaviour
     
     private void Update()
     {
-        if (bonus == 100)
+        if (bonus >= 100)
         {
             UseBonus();
         }
