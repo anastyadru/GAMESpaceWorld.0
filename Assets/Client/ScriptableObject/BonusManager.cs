@@ -53,10 +53,6 @@ public class BonusManager : MonoBehaviour
                 if (enemy != null && enemy.fill >= 50)
                 {
                     enemy.fill -= 50;
-                    // Добавьте следующую строку для обновления текста запасов врага
-                    enemy.UpdateFillText();
-                    bonus = 0; // Сброс бонусов после использования
-                    UpdateBonusText(); // Обновление текста бонусов
                 }
             }
         }
