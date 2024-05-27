@@ -23,7 +23,7 @@ public class BonusManager : MonoBehaviour
         UpdateBonusText();
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy")) // Проверяем столкновение с врагом
         {
