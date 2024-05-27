@@ -36,7 +36,12 @@ public class BonusManager : MonoBehaviour
     {
         if (bonus >= 100)
         {
-            UseBonus();
+            isUltimateReady = true;
+        }
+        
+        if (isUltimateReady && Input.GetButtonDown("Fire2")) // Проверяем, что ультимейт готов и игрок нажал правую кнопку мыши
+        {
+            UseUltimate();
         }
     }
     
