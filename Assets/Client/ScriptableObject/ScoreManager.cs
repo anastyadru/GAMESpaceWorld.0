@@ -13,8 +13,8 @@ public class ScoreManager : MonoBehaviour
     
     [SerializeField] private Text HighScoreText;
     
-    public float score = 0f;
-    public float highscore = 0f;
+    public float score;
+    public float highscore;
     private string highScoreKey = "HighScore";
 
     public void Start()
