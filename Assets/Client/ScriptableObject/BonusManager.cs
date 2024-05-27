@@ -50,18 +50,17 @@ public class BonusManager : MonoBehaviour
         BonusText.text = "BONUS: " + bonus.ToString();
     }
 
-    private void UseBonus()
+    private void UseUltimate()
     {
-        if (Input.GetButton("Fire2"))
+        // Наносим урон всем врагам на карте
+        EnemyController[] enemies = FindObjectsOfType<EnemyController>();
+        foreach (EnemyController enemy in enemies)
         {
-            if (lazerShot != null)
-            {
-                EnemyController enemy = lazerShot.GetComponent<EnemyController>();
-                if (enemy != null && enemy.fill >= 50)
-                {
-                    enemy.fill -= 50;
-                }
-            }
+            enemy.TakeDamage(2.5f * enemy.baseDamage); // Наносим урон в 250% от базового урона
         }
+        
+        bonus = 0; // Обнуляем бонусы после использования ультимейта
+        isUltimateReady = false; // Ультимейт больше не готов
+        UpdateBonusText(); // Обновляем текст бонусов
     }
 }
