@@ -32,34 +32,36 @@ public class BonusManager : MonoBehaviour
         }
     }
     
-    private void Update()
-    {
-        if (bonus >= 100)
-        {
-            isUltimateReady = true;
-        }
+    // private void Update()
+    // {
+        //if (bonus >= 100)
+        // {
+            // isUltimateReady = true;
+        // }
         
-        if (isUltimateReady && Input.GetButtonDown("Fire2")) // Проверяем, что ультимейт готов и игрок нажал правую кнопку мыши
-        {
-            UseUltimate();
-        }
-    }
+        // if (isUltimateReady && Input.GetButtonDown("Fire2"))
+        // {
+            // UseUltimate();
+        // }
+    // }
     
     private void UpdateBonusText()
     {
         BonusText.text = "BONUS: " + bonus.ToString();
     }
 
-    private void UseUltimate()
-    {
-        EnemyController[] enemies = FindObjectsOfType<EnemyController>();
-        foreach (EnemyController enemy in enemies)
-        {
-            enemy.TakeDamage(2.5f * enemy.baseDamage);
-        }
-        
-        bonus = 0;
-        isUltimateReady = false;
-        UpdateBonusText();
-    }
+    // private void UseUltimate()
+    // {
+        // if (Input.GetButton("Fire2"))
+        // {
+            // if (lazerShot != null)
+            // {
+                // EnemyController enemy = lazerShot.GetComponent<EnemyController>();
+                // if (enemy != null && enemy.fill >= 50)
+                // {
+                    // enemy.fill -= 50;
+                // }
+            // }
+        // }
+    // }
 }
