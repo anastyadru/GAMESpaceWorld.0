@@ -25,7 +25,7 @@ public class BonusManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("lazerShot") && other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy")) // Проверяем столкновение с врагом
         {
             bonus += 5;
             UpdateBonusText();
