@@ -26,8 +26,8 @@ public class ScoreManager : MonoBehaviour
     {
         if (other.CompareTag("lazerShot"))
         {
-            health -= 5;
-            UpdateHealthText();
+            score += 3;
+            UpdateScoreText();
         }
     }
     
