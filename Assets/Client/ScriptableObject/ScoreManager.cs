@@ -25,7 +25,7 @@ public class ScoreManager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("lazerShot") && other.gameObject.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
