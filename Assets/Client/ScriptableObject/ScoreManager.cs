@@ -7,33 +7,46 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class BonusManager : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] private Text BonusText;
+    [SerializeField] private Text ScoreText;
     
-    public float bonus = 0f;
+    [SerializeField] private Text HighScoreText;
     
-    public GameObject lazerShot; // Префаб снаряда
-    public Transform lazerGun; // Позиция для выстрела
-    
-    private bool isUltimateReady = false;
-    
+    public float score = 0f;
+    public float highscore = 0f;
+    private string highScoreKey = "HighScore";
+
     public void Start()
     {
-        UpdateBonusText();
+        highscore = PlayerPrefs.GetFloat(highScoreKey, 0f);
+        UpdateScoreText();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy")) // Проверяем столкновение с врагом
+        if (other.CompareTag("lazerShot"))
         {
-            bonus += 5;
-            UpdateBonusText();
+            if (other.GetComponent<Collider>().gameObject.CompareTag("Enemy"))
+            {
+                Enemy enemy = other.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    score += enemy.health;
+                    UpdateScoreText();
+                    if (score > highscore)
+                    {
+                        highscore = score;
+                        PlayerPrefs.SetFloat(highScoreKey, highscore);
+                        HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
+                    }
+                }
+            }
         }
     }
     
-    private void UpdateBonusText()
+    private void UpdateScoreText()
     {
-        BonusText.text = "BONUS: " + bonus.ToString();
+        ScoreText.text = "SCORE: " + score.ToString();
     }
 }
