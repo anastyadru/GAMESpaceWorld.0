@@ -23,23 +23,20 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreText();
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("lazerShot"))
+        if (other.CompareTag("lazerShot") && other.gameObject.CompareTag("Enemy"))
         {
-            if (other.GetComponent<Collider>().gameObject.CompareTag("Enemy"))
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
             {
-                Enemy enemy = other.GetComponent<Enemy>();
-                if (enemy != null)
+                score += enemy.health;
+                UpdateScoreText();
+                if (score > highscore)
                 {
-                    score += enemy.health;
-                    UpdateScoreText();
-                    if (score > highscore)
-                    {
-                        highscore = score;
-                        PlayerPrefs.SetFloat(highScoreKey, highscore);
-                        HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
-                    }
+                    highscore = score;
+                    PlayerPrefs.SetFloat(highScoreKey, highscore);
+                    HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
                 }
             }
         }
