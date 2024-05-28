@@ -42,12 +42,6 @@ public class ScoreManager : MonoBehaviour
         // {
             // score += enemy.health;
             // UpdateScoreText();
-            // if (score > highscore)
-            // {
-                // highscore = score;
-                // PlayerPrefs.SetFloat(highScoreKey, highscore);
-                // HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
-            // }
         // }
     }
     
