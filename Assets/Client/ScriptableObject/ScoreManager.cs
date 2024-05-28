@@ -50,7 +50,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
     
-    private void UpdateScore()
+    private void UpdateScoreText()
     {
         ScoreText.text = "SCORE: " + score.ToString();
     }
