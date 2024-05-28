@@ -15,10 +15,11 @@ public class ScoreManager : MonoBehaviour
     
     public float score = 0f;
     public float highscore = 0f;
-    // private string highScoreKey = "HighScore";
+    private string highScoreKey = "HighScore";
 
     public void Start()
     {
+        highscore = PlayerPrefs.GetFloat(highScoreKey, 0f);
         UpdateScoreText();
     }
 
