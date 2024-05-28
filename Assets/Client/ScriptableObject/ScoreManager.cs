@@ -28,7 +28,7 @@ public class ScoreManager : MonoBehaviour
         HighScoreText.text = "HIGHSCORE: " + PlayerPrefs.GetInt("score").ToString();
     }
 
-    private void OnTriggerEnter(Collider other)
+    IEnumerator UpdateScore()
     {
         if (other.CompareTag("lazerShot"))
         {
