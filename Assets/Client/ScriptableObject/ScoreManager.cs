@@ -41,7 +41,6 @@ public class ScoreManager : MonoBehaviour
         // if (enemy != null)
         // {
             // score += enemy.health;
-            // UpdateScoreText();
         // }
     }
     
