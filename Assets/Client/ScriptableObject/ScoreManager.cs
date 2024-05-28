@@ -9,18 +9,23 @@ using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] private Text ScoreText;
-    
     [SerializeField] private Text HighScoreText;
     
+    [SerializeField] private Text ScoreText;
+
     public float score;
     public float highscore;
     private string highScoreKey = "HighScore";
 
     public void Start()
     {
-        highscore = PlayerPrefs.GetFloat(highScoreKey, 0f);
-        UpdateScoreText();
+        score = 0;
+        StartCoroutine(UpdateScore());
+    }
+    
+    public void Update()
+    {
+        HighScoreText.text = "HIGHSCORE: " + PlayerPrefs.GetInt("score").ToString();
     }
 
     private void OnTriggerEnter(Collider other)
