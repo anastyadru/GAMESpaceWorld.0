@@ -11,10 +11,10 @@ public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private Text ScoreText;
     
-    // [SerializeField] private Text HighScoreText;
+    [SerializeField] private Text HighScoreText;
     
     public float score = 0f;
-    // public float highscore = 0f;
+    public float highscore = 0f;
     // private string highScoreKey = "HighScore";
 
     public void Start()
