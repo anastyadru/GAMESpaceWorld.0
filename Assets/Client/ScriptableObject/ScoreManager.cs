@@ -10,7 +10,6 @@ using UnityEngine.SceneManagement;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private Text ScoreText;
-    
     [SerializeField] private Text HighScoreText;
     
     public float score = 0f;
@@ -27,7 +26,12 @@ public class ScoreManager : MonoBehaviour
     {
         if (other.CompareTag("lazerShot"))
         {
-            score += 3;
+            // score += 3;
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                score += enemy.health;
+            }
             UpdateScoreText();
             
             if (score > highscore)
@@ -37,11 +41,6 @@ public class ScoreManager : MonoBehaviour
                 HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
             }
         }
-        // Enemy enemy = other.GetComponent<Enemy>();
-        // if (enemy != null)
-        // {
-            // score += enemy.health;
-        // }
     }
     
     private void UpdateScoreText()
