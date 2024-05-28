@@ -29,6 +29,13 @@ public class ScoreManager : MonoBehaviour
         {
             score += 3;
             UpdateScoreText();
+            
+            if (score > highscore)
+            {
+                highscore = score;
+                PlayerPrefs.SetFloat(highScoreKey, highscore);
+                HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
+            }
         }
         // Enemy enemy = other.GetComponent<Enemy>();
         // if (enemy != null)
