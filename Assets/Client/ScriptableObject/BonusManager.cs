@@ -24,7 +24,7 @@ public class BonusManager : MonoBehaviour
     {
         if (other.CompareTag("lazerShot"))
         {
-            bonus += 5;
+            bonus += 10;
             UpdateBonusText();
         }
     }
