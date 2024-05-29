@@ -53,12 +53,7 @@ public class BonusManager : MonoBehaviour
 
         foreach (GameObject enemyObject in enemies)
         {
-            EnemyController enemy = enemyObject.GetComponent<EnemyController>();
-        
-            if (enemy != null)
-            {
-                enemy.fill -= 2.5f * enemy.baseDamage; // Наносим урон равный 250% от базового урона
-            }
+            Destroy(enemyObject);
         }
     }
 }
