@@ -13,7 +13,7 @@ public class BonusManager : MonoBehaviour
     
     public float bonus = 0f;
 
-    // private bool isUltimateReady = false;
+    private bool isUltimateReady = false;
     
     public void Start()
     {
@@ -29,18 +29,18 @@ public class BonusManager : MonoBehaviour
         }
     }
     
-    // private void Update()
-    // {
-        //if (bonus >= 100)
-        // {
-            // isUltimateReady = true;
-        // }
+    private void Update()
+    {
+        if (bonus >= 100)
+        {
+            isUltimateReady = true;
+        }
         
-        // if (isUltimateReady && Input.GetButtonDown("Fire2"))
-        // {
-            // UseUltimate();
-        // }
-    // }
+        if (isUltimateReady && Input.GetButtonDown("Fire2"))
+        {
+            UseUltimate();
+        }
+    }
     
     private void UpdateBonusText()
     {
