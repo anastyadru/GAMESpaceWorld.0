@@ -47,18 +47,18 @@ public class BonusManager : MonoBehaviour
         BonusText.text = "BONUS: " + bonus.ToString();
     }
 
-    // private void UseUltimate()
-    // {
-        // if (Input.GetButton("Fire2"))
-        // {
-            // if (lazerShot != null)
-            // {
-                // EnemyController enemy = lazerShot.GetComponent<EnemyController>();
-                // if (enemy != null && enemy.fill >= 50)
-                // {
-                    // enemy.fill -= 50;
-                // }
-            // }
-        // }
-    // }
+    private void UseUltimate()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemyObject in enemies)
+        {
+            EnemyController enemy = enemyObject.GetComponent<EnemyController>();
+        
+            if (enemy != null)
+            {
+                enemy.fill -= 2.5f * enemy.baseDamage; // Наносим урон равный 250% от базового урона
+            }
+        }
+    }
 }
