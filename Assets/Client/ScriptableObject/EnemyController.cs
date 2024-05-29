@@ -31,8 +31,7 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(other.gameObject);
             enemyHealth.TakeDamage();
-            remainingEnemies--;
-            if (remainingEnemies == 0)
+            if (enemyHealth.IsDead())
             {
                 currentWave++;
                 if (currentWave == waveSizes.Length)
