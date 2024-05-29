@@ -36,8 +36,12 @@ public class EnemyController : MonoBehaviour
                 remainingEnemies--;
                 if (remainingEnemies == 0)
                 {
-                    Debug.Log("Game Over");
-                    return;
+                    currentWave++;
+                    if (currentWave == waveSizes.Length)
+                    {
+                        Debug.Log("Game Over");
+                        return;
+                    }
                 }
             
                 GenerateWave(waveSizes[currentWave], transform.position);
