@@ -1930,6 +1930,7 @@ GameObject:
   - component: {fileID: 709502017}
   - component: {fileID: 709502014}
   - component: {fileID: 709502018}
+  - component: {fileID: 709502019}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2013,6 +2014,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthText: {fileID: 1814785705}
   health: 100
+--- !u!114 &709502019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709502013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae9c5a0760fcc442956350296955e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BonusText: {fileID: 1567527121}
+  bonus: 0
+  lazerShot: {fileID: 1683373318}
+  lazerGun: {fileID: 2866936916054691463, guid: e804b69cd4d3e6a4285c92db9ed34cf2, type: 3}
 --- !u!1 &732360972
 GameObject:
   m_ObjectHideFlags: 0
@@ -4152,22 +4169,6 @@ MonoBehaviour:
   enemyHealth: {fileID: 0}
   bar: {fileID: 1925066761}
   fill: 100
---- !u!114 &1277018348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277018345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ae9c5a0760fcc442956350296955e01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BonusText: {fileID: 1567527121}
-  bonus: 0
-  lazerShot: {fileID: 1683373318}
-  lazerGun: {fileID: 2866936916054691463, guid: e804b69cd4d3e6a4285c92db9ed34cf2, type: 3}
 --- !u!1 &1284528798
 GameObject:
   m_ObjectHideFlags: 0

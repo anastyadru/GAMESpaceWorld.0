@@ -12,11 +12,8 @@ public class BonusManager : MonoBehaviour
     [SerializeField] private Text BonusText;
     
     public float bonus = 0f;
-    
-    public GameObject lazerShot; // Префаб снаряда
-    public Transform lazerGun; // Позиция для выстрела
-    
-    private bool isUltimateReady = false;
+
+    // private bool isUltimateReady = false;
     
     public void Start()
     {
@@ -25,7 +22,7 @@ public class BonusManager : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy")) // Проверяем столкновение с врагом
+        if (other.CompareTag("lazerShot"))
         {
             bonus += 5;
             UpdateBonusText();
