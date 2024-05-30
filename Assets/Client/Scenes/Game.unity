@@ -4063,15 +4063,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 239889338, guid: 4575180d6a22e05488b414802068c65d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 6
+      value: 5.2
       objectReference: {fileID: 0}
     - target: {fileID: 239889338, guid: 4575180d6a22e05488b414802068c65d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 6
+      value: 5.8
       objectReference: {fileID: 0}
     - target: {fileID: 239889338, guid: 4575180d6a22e05488b414802068c65d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 7
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 502305671, guid: 4575180d6a22e05488b414802068c65d, type: 3}
       propertyPath: m_IsActive
