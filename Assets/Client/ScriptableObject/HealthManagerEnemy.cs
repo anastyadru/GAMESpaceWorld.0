@@ -9,13 +9,12 @@ using UnityEngine.SceneManagement;
 
 public class HealthManagerEnemy : MonoBehaviour
 {
-    public float fill = 100f;
+    public float fill = 1f;
     public Image bar;
 
     public void TakeDamage()
     {
-        fill -= 20;
-        bar.fillAmount = fill / 100;
+        fill -= 0.2;
         if (fill <= 0)
         {
             EndEnemy();
