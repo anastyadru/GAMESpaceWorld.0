@@ -40,4 +40,9 @@ public class BulletControllerPlayer : MonoBehaviour, IPoolable
     {
         gameObject.SetActive(false);
     }
+    
+    private void EndEnemy()
+    {
+        gameObject.SetActive(false);
+    }
 }
