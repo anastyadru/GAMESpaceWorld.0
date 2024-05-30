@@ -56,6 +56,7 @@ public class EnemyController : MonoBehaviour
             enemy.transform.position += new Vector3(randomX, 0, 0);
             enemyHealth = enemy.GetComponent<HealthManagerEnemy>();
             enemyHealth.bar = bar;
+            remainingEnemies--;
         }
     }
 }
