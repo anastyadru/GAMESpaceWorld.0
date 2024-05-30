@@ -31,17 +31,14 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(other.gameObject);
             enemyHealth.TakeDamage();
-            if (enemyHealth.IsDead())
+            remainingEnemies--;
+            if (remainingEnemies == 0)
             {
-                remainingEnemies--;
-                if (remainingEnemies == 0)
+                currentWave++;
+                if (currentWave == waveSizes.Length)
                 {
-                    currentWave++;
-                    if (currentWave == waveSizes.Length)
-                    {
-                        Debug.Log("Game Over");
-                        return;
-                    }
+                    Debug.Log("Game Over");
+                    return;
                 }
             
                 GenerateWave(waveSizes[currentWave], transform.position);
