@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class HealthManagerEnemy : MonoBehaviour
 {
-    public float fill = 1f;
+    public double fill = 1f;
     public Image bar;
 
     public void TakeDamage()
