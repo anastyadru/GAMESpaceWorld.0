@@ -24329,7 +24329,6 @@ GameObject:
   - component: {fileID: 7020736677043190404}
   - component: {fileID: 2728280784033118027}
   - component: {fileID: 1193623656054736836}
-  - component: {fileID: 735805956870123100}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -24403,20 +24402,6 @@ MonoBehaviour:
   lazerShot1: {fileID: 6147934316776804981, guid: d9fa24887c9ea9f4888336859eb2ab70, type: 3}
   lazerGun1: {fileID: 7656296528031016180}
   health: 100
---- !u!114 &735805956870123100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3627337302967964834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2b4238a3eb797241b103baa8ef57405, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fill: 100
-  bar: {fileID: 502305673}
 --- !u!1 &3784029019699646605
 GameObject:
   m_ObjectHideFlags: 0
