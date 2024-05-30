@@ -24,10 +24,8 @@ public class BulletControllerPlayer : MonoBehaviour, IPoolable
             enemy.health -= 20;
             if (enemy.health <= 0)
             {
-                enemy.EndEnemy();
+                enemy.OnRelease();
             }
-            
-            OnRelease();
         }
     }
     
@@ -37,11 +35,6 @@ public class BulletControllerPlayer : MonoBehaviour, IPoolable
     }
 
     public void OnRelease()
-    {
-        gameObject.SetActive(false);
-    }
-    
-    private void EndEnemy()
     {
         gameObject.SetActive(false);
     }
