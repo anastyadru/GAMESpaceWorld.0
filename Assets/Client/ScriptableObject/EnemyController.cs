@@ -54,8 +54,9 @@ public class EnemyController : MonoBehaviour
             GameObject enemy = Instantiate(enemyPrefab, startPosition, transform.rotation);
             float randomX = UnityEngine.Random.Range(-100f, 100f);
             enemy.transform.position += new Vector3(randomX, 0, 0);
-            HealthManagerEnemy enemyHealth = enemy.GetComponent<HealthManagerEnemy>();
+            enemyHealth = enemy.GetComponent<HealthManagerEnemy>();
             enemyHealth.bar = bar;
+            remainingEnemies--;
         }
     }
 }
