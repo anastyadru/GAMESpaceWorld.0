@@ -70,6 +70,17 @@ public class Enemy : MonoBehaviour, IPoolable
                 nextShotTime = Time.time + 3f;
             }
         }
+        else
+        {
+            // Если объект пули не был получен из пула, создаем новый объект пули
+            GameObject newBulletObject = Instantiate(lazerShot1, lazerGun1.position, Quaternion.identity);
+            BulletControllerEnemy newBullet = newBulletObject.GetComponent<BulletControllerEnemy>();
+            if (newBullet != null)
+            {
+                newBullet.gameObject.SetActive(true);
+                nextShotTime = Time.time + 3f;
+            }
+        }
     }
     
     public void OnRelease()
