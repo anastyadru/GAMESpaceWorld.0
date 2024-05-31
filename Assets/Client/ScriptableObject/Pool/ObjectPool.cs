@@ -24,7 +24,7 @@ public class ObjectPool : MonoBehaviour
     public void PrePool<T>(T prefab, int count, Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (!poolDictionary.ContainsKey(type))
+        if (!poolDict.ContainsKey(type))
         {
             Queue<IPoolable> objectPool = new Queue<IPoolable>();
             for (int i = 0; i < count; i++)
@@ -34,16 +34,16 @@ public class ObjectPool : MonoBehaviour
                 objectPool.Enqueue(obj);
             }
 
-            poolDictionary.Add(type, objectPool);
+            poolDict.Add(type, objectPool);
         }
     }
 
     public T Get<T>(Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (poolDictionary.ContainsKey(type))
+        if (poolDict.ContainsKey(type))
         {
-            Queue<IPoolable> objectPool = poolDictionary[type];
+            Queue<IPoolable> objectPool = poolDict[type];
             if (objectPool.Count > 0)
             {
                 T obj = objectPool.Dequeue() as T;
@@ -58,9 +58,9 @@ public class ObjectPool : MonoBehaviour
     public void Release<T>(T poolableObject, Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (poolDictionary.ContainsKey(type))
+        if (poolDict.ContainsKey(type))
         {
-            Queue<IPoolable> objectPool = poolDictionary[type];
+            Queue<IPoolable> objectPool = poolDict[type];
             objectPool.Enqueue(poolableObject);
             poolableObject.OnRelease();
         }
