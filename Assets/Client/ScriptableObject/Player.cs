@@ -40,6 +40,6 @@ public class Player : MonoBehaviour
     
     public void OnRelease()
     {
-        // Действия при смерти игрока
+        
     }
 }
