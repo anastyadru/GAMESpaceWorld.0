@@ -36,6 +36,7 @@ public class BulletControllerEnemy : MonoBehaviour, IPoolable
         OnRelease();
         bulletPool.Release(this);
     }
+    
     public void Update()
     {
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -speed);

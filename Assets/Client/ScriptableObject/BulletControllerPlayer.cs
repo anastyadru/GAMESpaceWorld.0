@@ -26,7 +26,15 @@ public class BulletControllerPlayer : MonoBehaviour, IPoolable
             {
                 enemy.OnRelease();
             }
+            
+            OnHit();
         }
+    }
+    
+    public void OnHit()
+    {
+        OnRelease();
+        bulletPool.Release(this);
     }
     
     private void Update()
