@@ -34,7 +34,7 @@ public class BulletControllerPlayer : MonoBehaviour, IPoolable
     public void OnHit()
     {
         OnRelease();
-        bulletPool.Release(this);
+        bulletPool.Release(this, bulletPool.playerPoolDictionary);
     }
     
     private void Update()
