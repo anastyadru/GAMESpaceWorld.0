@@ -49,6 +49,13 @@ public class ObjectPool : MonoBehaviour
                 obj.gameObject.SetActive(true);
                 return obj;
             }
+            else 
+            {
+                // Если пулл пуст, создаем новый объект и добавляем его в пулл
+                T newObj = GameObject.Instantiate(prefabEnemy) as T;
+                newObj.gameObject.SetActive(true);
+                return newObj;
+            }
         }
 
         return null;
