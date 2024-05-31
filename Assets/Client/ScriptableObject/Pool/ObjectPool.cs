@@ -15,9 +15,9 @@ public class ObjectPool : MonoBehaviour
 
     public void Start()
     {
-        PrePool<BulletControllerPlayer>(bulletPrefabPlayer, 50);
-        PrePool<BulletControllerEnemy>(bulletPrefabEnemy, 50);
-        PrePool<Enemy>(PrefabEnemy, 30);
+        PrePool<BulletControllerPlayer>(bulletPrefabPlayer, 100);
+        PrePool<BulletControllerEnemy>(bulletPrefabEnemy, 100);
+        PrePool<Enemy>(PrefabEnemy, 50);
     }
 
     public void PrePool<T>(T prefab, int count) where T : MonoBehaviour, IPoolable
@@ -48,13 +48,6 @@ public class ObjectPool : MonoBehaviour
                 T obj = objectPool.Dequeue() as T;
                 obj.gameObject.SetActive(true);
                 return obj;
-            }
-            else 
-            {
-                // Если пулл пуст, создаем новый объект и добавляем его в пулл
-                T newObj = GameObject.Instantiate(prefabEnemy) as T;
-                newObj.gameObject.SetActive(true);
-                return newObj;
             }
         }
 
