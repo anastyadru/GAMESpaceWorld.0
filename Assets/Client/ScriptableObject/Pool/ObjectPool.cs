@@ -11,7 +11,8 @@ public class ObjectPool : MonoBehaviour
     public BulletControllerEnemy bulletPrefabEnemy;
     public Enemy PrefabEnemy;
     
-    private Dictionary<Type, Queue<IPoolable>> poolDictionary = new Dictionary<Type, Queue<IPoolable>>();
+    private Dictionary<Type, Queue<IPoolable>> playerPoolDictionary = new Dictionary<Type, Queue<IPoolable>>();
+    private Dictionary<Type, Queue<IPoolable>> enemyPoolDictionary = new Dictionary<Type, Queue<IPoolable>>();
 
     public void Start()
     {
