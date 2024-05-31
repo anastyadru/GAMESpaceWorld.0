@@ -16,12 +16,12 @@ public class ObjectPool : MonoBehaviour
 
     public void Start()
     {
-        PrePool<BulletControllerPlayer>(bulletPrefabPlayer, 100);
-        PrePool<BulletControllerEnemy>(bulletPrefabEnemy, 100);
-        PrePool<Enemy>(PrefabEnemy, 50);
+        PrePool<BulletControllerPlayer>(bulletPrefabPlayer, 100, playerPoolDictionary);
+        PrePool<BulletControllerEnemy>(bulletPrefabEnemy, 100, enemyPoolDictionary);
+        PrePool<Enemy>(PrefabEnemy, 50, enemyPoolDictionary);
     }
 
-    public void PrePool<T>(T prefab, int count) where T : MonoBehaviour, IPoolable
+    public void PrePool<T>(T prefab, int count, Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
         if (!poolDictionary.ContainsKey(type))
@@ -38,7 +38,7 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    public T Get<T>() where T : MonoBehaviour, IPoolable
+    public T Get<T>(Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
         if (poolDictionary.ContainsKey(type))
@@ -55,7 +55,7 @@ public class ObjectPool : MonoBehaviour
         return null;
     }
 
-    public void Release<T>(T poolableObject) where T : MonoBehaviour, IPoolable
+    public void Release<T>(T poolableObject, Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
         if (poolDictionary.ContainsKey(type))
@@ -64,5 +64,26 @@ public class ObjectPool : MonoBehaviour
             objectPool.Enqueue(poolableObject);
             poolableObject.OnRelease();
         }
+    }
+    
+    // Методы для получения и освобождения пуль игрока и врага
+    public BulletControllerPlayer GetPlayerBullet()
+    {
+        return Get<BulletControllerPlayer>(playerPoolDictionary);
+    }
+
+    public void ReleasePlayerBullet(BulletControllerPlayer bullet)
+    {
+        Release(bullet, playerPoolDictionary);
+    }
+
+    public BulletControllerEnemy GetEnemyBullet()
+    {
+        return Get<BulletControllerEnemy>(enemyPoolDictionary);
+    }
+
+    public void ReleaseEnemyBullet(BulletControllerEnemy bullet)
+    {
+        Release(bullet, enemyPoolDictionary);
     }
 }
