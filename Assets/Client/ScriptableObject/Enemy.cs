@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour, IPoolable
             {
                 bullet.transform.position = lazerGun1.position;
                 bullet.gameObject.SetActive(true);
-                nextShotTime = Time.time + 5f;
+                nextShotTime = Time.time + 2f;
             }
         }
     }
