@@ -72,7 +72,6 @@ public class Enemy : MonoBehaviour, IPoolable
         }
         else
         {
-            // Если объект пули не был получен из пула, создаем новый объект пули
             GameObject newBulletObject = Instantiate(lazerShot1, lazerGun1.position, Quaternion.identity);
             BulletControllerEnemy newBullet = newBulletObject.GetComponent<BulletControllerEnemy>();
             if (newBullet != null)

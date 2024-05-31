@@ -60,8 +60,6 @@ public class ObjectPool : MonoBehaviour
             poolableObject.OnRelease();
         }
     }
-    
-    // Методы для получения и освобождения пуль игрока и врага
     public BulletControllerPlayer GetPlayerBullet()
     {
         return Get<BulletControllerPlayer>(playerPoolDictionary);
