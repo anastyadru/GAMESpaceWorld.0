@@ -41,17 +41,12 @@ public class ObjectPool : MonoBehaviour
     public T Get<T>(Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (poolDict.ContainsKey(type))
+        if (poolDict.ContainsKey(type) && poolDict[type].Count > 0)
         {
-            Queue<IPoolable> objectPool = poolDict[type];
-            if (objectPool.Count > 0)
-            {
-                T obj = objectPool.Dequeue() as T;
-                obj.gameObject.SetActive(true);
-                return obj;
-            }
+            IPoolable obj = poolDict[type].Dequeue();
+            return (T)obj;
         }
-
+    
         return null;
     }
 

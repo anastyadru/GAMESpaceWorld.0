@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour, IPoolable
     {
         if (bulletPool != null)
         {
-            BulletControllerEnemy bullet = bulletPool.Get<BulletControllerEnemy>();
+            BulletControllerEnemy bullet = bulletPool.Get<BulletControllerEnemy>(bulletPool.enemyPoolDictionary);
             if (bullet != null)
             {
                 bullet.transform.position = lazerGun1.position;
