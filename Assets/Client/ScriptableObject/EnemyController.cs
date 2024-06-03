@@ -35,13 +35,15 @@ public class EnemyController : MonoBehaviour
             if (remainingEnemies == 0)
             {
                 currentWave++;
-                if (currentWave == waveSizes.Length)
+                if (currentWave < waveSizes.Length)
+                {
+                    GenerateWave(waveSizes[currentWave], transform.position);
+                }
+                else
                 {
                     Debug.Log("Game Over");
-                    return;
+                    // Здесь можно добавить код для завершения игры или перехода на другую сцену
                 }
-            
-                GenerateWave(waveSizes[currentWave], transform.position);
             }
         }
     }
@@ -56,7 +58,6 @@ public class EnemyController : MonoBehaviour
             enemy.transform.position += new Vector3(randomX, 0, 0);
             enemyHealth = enemy.GetComponent<HealthManagerEnemy>();
             enemyHealth.bar = bar;
-            remainingEnemies--;
         }
     }
 }
