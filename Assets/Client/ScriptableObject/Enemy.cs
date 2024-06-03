@@ -7,10 +7,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IPoolable
 {
-    private float speed = 250f;
     private float smoothness = 3f;
-    private float projectileSpeedMultiplier = 1.05f;
-
     private Vector3 targetPosition;
     
     public GameObject lazerShot1;
