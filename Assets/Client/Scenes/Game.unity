@@ -4864,9 +4864,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1277018345}
-  enemyHealth: {fileID: 0}
+  enemyHealth: {fileID: 1277018347}
   bar: {fileID: 1925066761}
-  fill: 100
 --- !u!4 &1560958772
 Transform:
   m_ObjectHideFlags: 0
