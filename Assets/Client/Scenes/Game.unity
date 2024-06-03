@@ -4864,6 +4864,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1277018345}
+  currentWave: 0
+  waveSizes: 02000000040000000300000005000000070000000b00000007000000
+  enemyHealthMultiplier: 1.05
+  remainingEnemies: 0
   enemyHealth: {fileID: 1277018347}
   bar: {fileID: 1925066761}
 --- !u!4 &1560958772

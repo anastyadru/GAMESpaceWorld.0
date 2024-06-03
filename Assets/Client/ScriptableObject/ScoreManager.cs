@@ -26,12 +26,11 @@ public class ScoreManager : MonoBehaviour
     {
         if (other.CompareTag("lazerShot"))
         {
-            score += 3;
-            // Enemy enemy = other.GetComponent<Enemy>();
-            // if (enemy != null)
-            // {
-                // score += enemy.health;
-            // }
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                score += enemy.health;
+            }
             UpdateScoreText();
             
             if (score > highscore)

@@ -13,8 +13,8 @@ public class Enemy : MonoBehaviour, IPoolable
 
     private Vector3 targetPosition;
     
-    private GameObject lazerShot1;
-    private Transform lazerGun1;
+    public GameObject lazerShot1;
+    public Transform lazerGun1;
     private float nextShotTime;
     
     public int health = 100;
