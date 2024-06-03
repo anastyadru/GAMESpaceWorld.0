@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour
     private int remainingEnemies;
     public HealthManagerEnemy enemyHealth;
     public Image bar;
-    public double fill = 1f;
+    // public double fill = 1f;
 
     public void Start()
     {
@@ -55,15 +55,18 @@ public class EnemyController : MonoBehaviour
             GameObject enemy = Instantiate(enemyPrefab, startPosition, transform.rotation);
             float randomX = UnityEngine.Random.Range(-100f, 100f);
             enemy.transform.position += new Vector3(randomX, 0, 0);
-            enemyHealth = enemy.GetComponent<HealthManagerEnemy>();
+            HealthManagerEnemy enemyHealth = enemy.GetComponent<HealthManagerEnemy>();
             enemyHealth.bar = bar;
         }
     }
     
     private void EndGame()
     {
-        GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
-        enemy.SetActive(false);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.SetActive(false);
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 }
