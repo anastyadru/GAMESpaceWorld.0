@@ -64,6 +64,6 @@ public class EnemyController : MonoBehaviour
     {
         GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
         enemy.SetActive(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 }
