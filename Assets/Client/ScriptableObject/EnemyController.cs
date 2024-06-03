@@ -41,8 +41,7 @@ public class EnemyController : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Game Over");
-                    // Здесь можно добавить код для завершения игры или перехода на другую сцену
+                    EndGame();
                 }
             }
         }
@@ -59,5 +58,12 @@ public class EnemyController : MonoBehaviour
             enemyHealth = enemy.GetComponent<HealthManagerEnemy>();
             enemyHealth.bar = bar;
         }
+    }
+    
+    private void EndGame()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
