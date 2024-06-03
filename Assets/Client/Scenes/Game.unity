@@ -1927,9 +1927,9 @@ GameObject:
   m_Component:
   - component: {fileID: 709502015}
   - component: {fileID: 709502016}
+  - component: {fileID: 709502018}
   - component: {fileID: 709502017}
   - component: {fileID: 709502014}
-  - component: {fileID: 709502018}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
