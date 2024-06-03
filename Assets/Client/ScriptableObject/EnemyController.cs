@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
 
     public void Start()
     {
-        GenerateWave(waveSizes[currentWave], transform.position);
+        GenerateWave(waveSizes[currentWave], transform.position, 1.0f);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,7 +36,8 @@ public class EnemyController : MonoBehaviour
                 currentWave++;
                 if (currentWave < waveSizes.Length)
                 {
-                    GenerateWave(waveSizes[currentWave], transform.position);
+                    float newEnemyHealth = enemyHealth.fill * Mathf.Pow(enemyHealthMultiplier, currentWave);
+                    GenerateWave(waveSizes[currentWave], transform.position, newEnemyHealth);
                 }
                 else
                 {
@@ -46,7 +47,7 @@ public class EnemyController : MonoBehaviour
         }
     }
     
-    private void GenerateWave(int enemyCount, Vector3 startPosition)
+    private void GenerateWave(int enemyCount, Vector3 startPosition, float initialEnemyHealth)
     {
         remainingEnemies = enemyCount;
         for (int i = 0; i < enemyCount; i++)
@@ -56,6 +57,7 @@ public class EnemyController : MonoBehaviour
             enemy.transform.position += new Vector3(randomX, 0, 0);
             HealthManagerEnemy enemyHealthComponent = enemy.GetComponent<HealthManagerEnemy>();
             enemyHealthComponent.bar = bar;
+            enemyHealthComponent.fill = initialEnemyHealth;
         }
     }
     
