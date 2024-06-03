@@ -14,7 +14,7 @@ public class PlayerSelect : MonoBehaviour
 
     private void Start()
     {
-        index = PlayerPrefs.GetInt("SelectPlayer");
+        index = PlayerPrefs.GetInt("SelectPlayer", 0);
         characters = new GameObject[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -24,10 +24,7 @@ public class PlayerSelect : MonoBehaviour
         {
             go.SetActive(false);
         }
-        if (characters[index])
-        {
-            characters[index].SetActive(true);
-        }
+        characters[index].SetActive(true);
     }
 
     public void SelectLeft()
