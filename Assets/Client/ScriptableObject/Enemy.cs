@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour, IPoolable
     
     private ObjectPool bulletPool;
     
-    private void Awake()
+    public void Awake()
     {
         bulletPool = FindObjectOfType<ObjectPool>();
         

@@ -7,16 +7,19 @@ using UnityEngine;
 
 public class BulletControllerEnemy : MonoBehaviour, IPoolable
 {
-    public float speed = 100;
+    public float initialSpeed = 100;
+    public float speedMultiplier = 1.05f;
     
-    private ObjectPool bulletPool;
+    public ObjectPool bulletPool;
+    private EnemyController enemyController;
 
-    private void Awake()
+    public void Awake()
     {
         bulletPool = FindObjectOfType<ObjectPool>();
+        enemyController = FindObjectOfType<EnemyController>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -39,7 +42,11 @@ public class BulletControllerEnemy : MonoBehaviour, IPoolable
     
     public void Update()
     {
-        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -speed);
+        if (enemyController != null)
+        {
+            float currentSpeed = initialSpeed * Mathf.Pow(speedMultiplier, enemyController.currentWave);
+            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -currentSpeed);
+        }
     }
 
     public void OnRelease()

@@ -11,11 +11,11 @@ public class EnemyController : MonoBehaviour
 {
     public GameObject enemyPrefab;
     
-    private int currentWave = 0;
-    private int[] waveSizes = { 2, 4, 3, 5, 7, 11, 7 };
+    public int currentWave = 0;
+    public int[] waveSizes = { 2, 4, 3, 5, 7, 11, 7 };
     
-    private float enemyHealthMultiplier = 1.05f;
-    private int remainingEnemies;
+    public float enemyHealthMultiplier = 1.05f;
+    public int remainingEnemies;
     public HealthManagerEnemy enemyHealth;
     public Image bar;
 
@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour
         GenerateWave(waveSizes[currentWave], transform.position, 1.0f);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("lazerShot"))
         {
@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour
         }
     }
     
-    private void GenerateWave(int enemyCount, Vector3 startPosition, float initialEnemyHealth)
+    public void GenerateWave(int enemyCount, Vector3 startPosition, float initialEnemyHealth)
     {
         remainingEnemies = enemyCount;
         for (int i = 0; i < enemyCount; i++)
@@ -61,7 +61,7 @@ public class EnemyController : MonoBehaviour
         }
     }
     
-    private void EndGame()
+    public void EndGame()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
