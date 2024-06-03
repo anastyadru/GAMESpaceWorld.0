@@ -18,7 +18,6 @@ public class EnemyController : MonoBehaviour
     private int remainingEnemies;
     public HealthManagerEnemy enemyHealth;
     public Image bar;
-    // public double fill = 1f;
 
     public void Start()
     {
