@@ -1,8 +1,5 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -24,26 +21,32 @@ public class EnemyController : MonoBehaviour
         GenerateWave(waveSizes[currentWave], transform.position, 1.0f);
     }
 
-    public void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("lazerShot"))
         {
             Destroy(other.gameObject);
             enemyHealth.TakeDamage();
             remainingEnemies--;
+            
             if (remainingEnemies == 0)
             {
-                currentWave++;
-                if (currentWave < waveSizes.Length)
-                {
-                    float newEnemyHealth = enemyHealth.fill * Mathf.Pow(enemyHealthMultiplier, currentWave);
-                    GenerateWave(waveSizes[currentWave], transform.position, newEnemyHealth);
-                }
-                else
-                {
-                    EndGame();
-                }
+                HandleWaveCompletion();
             }
+        }
+    }
+    
+    private void HandleWaveCompletion()
+    {
+        currentWave++;
+        if (currentWave < waveSizes.Length)
+        {
+            float newEnemyHealth = enemyHealth.fill * Mathf.Pow(enemyHealthMultiplier, currentWave);
+            GenerateWave(waveSizes[currentWave], transform.position, newEnemyHealth);
+        }
+        else
+        {
+            EndGame();
         }
     }
     
@@ -52,9 +55,7 @@ public class EnemyController : MonoBehaviour
         remainingEnemies = enemyCount;
         for (int i = 0; i < enemyCount; i++)
         {
-            GameObject enemy = Instantiate(enemyPrefab, startPosition, transform.rotation);
-            float randomX = UnityEngine.Random.Range(-100f, 100f);
-            enemy.transform.position += new Vector3(randomX, 0, 0);
+            GameObject enemy = Instantiate(enemyPrefab, startPosition + new Vector3(Random.Range(-100f, 100f), 0, 0), transform.rotation);
             HealthManagerEnemy enemyHealthComponent = enemy.GetComponent<HealthManagerEnemy>();
             enemyHealthComponent.bar = bar;
             enemyHealthComponent.fill = initialEnemyHealth;
@@ -63,8 +64,7 @@ public class EnemyController : MonoBehaviour
     
     public void EndGame()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             enemy.SetActive(false);
         }
