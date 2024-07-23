@@ -1,8 +1,5 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletControllerEnemy : MonoBehaviour, IPoolable
@@ -12,11 +9,13 @@ public class BulletControllerEnemy : MonoBehaviour, IPoolable
     
     private ObjectPool bulletPool;
     private EnemyController enemyController;
+    private Rigidbody rb;
 
     private void Awake()
     {
         bulletPool = FindObjectOfType<ObjectPool>();
         enemyController = FindObjectOfType<EnemyController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,7 +44,7 @@ public class BulletControllerEnemy : MonoBehaviour, IPoolable
         if (enemyController != null)
         {
             float currentSpeed = initialSpeed * Mathf.Pow(speedMultiplier, enemyController.currentWave);
-            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -currentSpeed);
+            rb.velocity = new Vector3(0, 0, -currentSpeed);
         }
     }
 

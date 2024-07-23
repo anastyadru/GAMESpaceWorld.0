@@ -1,8 +1,5 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletControllerPlayer : MonoBehaviour, IPoolable
@@ -10,10 +7,12 @@ public class BulletControllerPlayer : MonoBehaviour, IPoolable
     public float speed = 100;
     
     private ObjectPool bulletPool;
+    private Rigidbody rb;
 
     private void Awake()
     {
         bulletPool = FindObjectOfType<ObjectPool>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,7 +38,7 @@ public class BulletControllerPlayer : MonoBehaviour, IPoolable
     
     private void Update()
     {
-        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, speed);
+        rb.velocity = new Vector3(0, 0, speed);
     }
 
     public void OnRelease()
