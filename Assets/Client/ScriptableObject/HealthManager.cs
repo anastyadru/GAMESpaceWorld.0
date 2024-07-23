@@ -1,17 +1,14 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
-    [SerializeField] private Text HealthText;
+    [SerializeField] private Text healthText;
     
-    public float health = 100f;
+    private float health = 100f;
 
     public void Start()
     {
@@ -37,7 +34,7 @@ public class HealthManager : MonoBehaviour
     
     private void UpdateHealthText()
     {
-        HealthText.text = "HEALTH: " + health.ToString();
+        healthText.text = $"HEALTH: {health}";
     }
     
     private void EndGame()
