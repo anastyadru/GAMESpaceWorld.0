@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
-    [SerializeField] private Text healthText;
+    [SerializeField] private Text HealthText;
     
-    private float health = 100f;
+    public float health = 100f;
 
     public void Start()
     {
@@ -34,7 +34,7 @@ public class HealthManager : MonoBehaviour
     
     private void UpdateHealthText()
     {
-        healthText.text = $"HEALTH: {health}";
+        HealthText.text = "HEALTH: " + health.ToString();
     }
     
     private void EndGame()
