@@ -1,8 +1,6 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IPoolable
@@ -20,13 +18,7 @@ public class Enemy : MonoBehaviour, IPoolable
     
     private void Awake()
     {
-        bulletPool = FindObjectOfType<ObjectPool>();
-        
-        if (bulletPool == null)
-        {
-            GameObject objectPoolObject = new GameObject("ObjectPool");
-            bulletPool = objectPoolObject.AddComponent<ObjectPool>();
-        }
+        bulletPool = FindObjectOfType<ObjectPool>() ?? new GameObject("ObjectPool").AddComponent<ObjectPool>();
     }
     
     private void Start()
@@ -36,8 +28,7 @@ public class Enemy : MonoBehaviour, IPoolable
 
     private void GenerateNewTargetPosition()
     {
-        float randomX = UnityEngine.Random.Range(-700f, 0f);
-        targetPosition = new Vector3(randomX, transform.position.y, transform.position.z);
+        targetPosition = new Vector3(UnityEngine.Random.Range(-700f, 0f), transform.position.y, transform.position.z);
     }
     
     private void Update()
@@ -57,25 +48,18 @@ public class Enemy : MonoBehaviour, IPoolable
     
     public void Shoot()
     {
-        if (bulletPool != null)
-        {
-            BulletControllerEnemy bullet = bulletPool.Get<BulletControllerEnemy>(bulletPool.enemyPoolDictionary);
-            if (bullet != null)
-            {
-                bullet.transform.position = lazerGun1.position;
-                bullet.gameObject.SetActive(true);
-                nextShotTime = Time.time + 1.5f;
-            }
-        }
-        else
+        BulletControllerEnemy bullet = bulletPool?.Get<BulletControllerEnemy>(bulletPool.enemyPoolDictionary);
+        if (bullet == null)
         {
             GameObject newBulletObject = Instantiate(lazerShot1, lazerGun1.position, Quaternion.identity);
-            BulletControllerEnemy newBullet = newBulletObject.GetComponent<BulletControllerEnemy>();
-            if (newBullet != null)
-            {
-                newBullet.gameObject.SetActive(true);
-                nextShotTime = Time.time + 1.5f;
-            }
+            bullet = newBulletObject.GetComponent<BulletControllerEnemy>();
+        }
+
+        if (bullet != null)
+        {
+            bullet.transform.position = lazerGun1.position;
+            bullet.gameObject.SetActive(true);
+            nextShotTime = Time.time + 1.5f;
         }
     }
     
