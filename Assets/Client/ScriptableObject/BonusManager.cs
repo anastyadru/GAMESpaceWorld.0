@@ -1,18 +1,13 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class BonusManager : MonoBehaviour
 {
     [SerializeField] private Text BonusText;
     
     public float bonus = 0f;
-
     private bool isUltimateReady = false;
     
     public void Start()
@@ -49,9 +44,7 @@ public class BonusManager : MonoBehaviour
 
     private void UseUltimate()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        foreach (GameObject enemyObject in enemies)
+        foreach (GameObject enemyObject in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             Destroy(enemyObject);
         }
