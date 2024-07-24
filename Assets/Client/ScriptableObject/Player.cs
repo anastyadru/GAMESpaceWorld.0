@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     {
         for (int i = 0; i < shotCount; i++)
         {
-            float angle = (i - 1) * 15; // -15, 0, +15 for blue ship
+            float angle = (i - 1) * 15; // -15, 0, +15
             Quaternion rotation = Quaternion.Euler(0, angle, 0) * transform.rotation;
             Instantiate(lazerShot, lazerGun.position, rotation);
         }
