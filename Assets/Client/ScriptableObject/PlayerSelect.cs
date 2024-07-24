@@ -12,16 +12,17 @@ public class PlayerSelect : MonoBehaviour
     {
         index = PlayerPrefs.GetInt("SelectPlayer", 0);
         characters = new GameObject[transform.childCount];
-        
+
         for (int i = 0; i < transform.childCount; i++)
         {
             characters[i] = transform.GetChild(i).gameObject;
         }
+
         foreach (GameObject go in characters)
         {
             go.SetActive(false);
         }
-        
+
         SetActiveCharacter(index);
     }
 
@@ -38,15 +39,17 @@ public class PlayerSelect : MonoBehaviour
     private void ChangeSelection(int direction)
     {
         SetActiveCharacter(index);
-        index = (index + direction + characters.Length) % characters.Length; // Обеспечивает цикличность
+        index = (index + direction + characters.Length) % characters.Length;
         SetActiveCharacter(index);
     }
 
     private void SetActiveCharacter(int activeIndex)
     {
         foreach (GameObject character in characters)
+        {
             character.SetActive(false);
-        
+        }
+
         characters[activeIndex].SetActive(true);
     }
 
@@ -55,3 +58,4 @@ public class PlayerSelect : MonoBehaviour
         PlayerPrefs.SetString("SelectedShip", characters[index].name);
         SceneManager.LoadScene("Game");
     }
+}
