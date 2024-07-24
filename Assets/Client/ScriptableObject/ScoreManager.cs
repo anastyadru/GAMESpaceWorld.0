@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] private Text scoreText;
-    [SerializeField] private Text highScoreText;
+    [SerializeField] private Text ScoreText;
+    [SerializeField] private Text HighScoreText;
     
-    private float score;
-    private float highScore;
-    private const string HighScoreKey = "HighScore";
+    public float score = 0f;
+    public float highscore = 0f;
+    private string highScoreKey = "HighScore";
 
     public void Start()
     {
-        highScore = PlayerPrefs.GetFloat(HighScoreKey, 0f);
-        UpdateUI();
+        highscore = PlayerPrefs.GetFloat(highScoreKey, 0f);
+        UpdateScoreText();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,20 +26,20 @@ public class ScoreManager : MonoBehaviour
             if (enemy != null)
             {
                 score += enemy.health;
-                UpdateUI();
             }
+            UpdateScoreText();
             
             if (score > highscore)
             {
-                highScore = score;
-                PlayerPrefs.SetFloat(HighScoreKey, highScore);
+                highscore = score;
+                PlayerPrefs.SetFloat(highScoreKey, highscore);
+                HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
             }
         }
     }
     
-    private void UpdateUI()
+    private void UpdateScoreText()
     {
-        scoreText.text = $"SCORE: {score}";
-        highScoreText.text = $"HIGHSCORE: {highScore}";
+        ScoreText.text = "SCORE: " + score.ToString();
     }
 }
