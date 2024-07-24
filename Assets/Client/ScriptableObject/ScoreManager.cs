@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] private Text ScoreText;
-    [SerializeField] private Text HighScoreText;
+    [SerializeField] private Text scoreText;
+    [SerializeField] private Text highScoreText;
     
-    public float score;
-    public float highscore;
-    private string highScoreKey = "HighScore";
+    private float score;
+    private float highScore;
+    private const string HighScoreKey = "HighScore";
 
     public void Start()
     {
@@ -26,20 +26,20 @@ public class ScoreManager : MonoBehaviour
             if (enemy != null)
             {
                 score += enemy.health;
+                UpdateUI();
             }
-            UpdateScoreText();
             
             if (score > highscore)
             {
-                highscore = score;
-                PlayerPrefs.SetFloat(highScoreKey, highscore);
-                HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
+                highScore = score;
+                PlayerPrefs.SetFloat(HighScoreKey, highScore);
             }
         }
     }
     
-    private void UpdateScoreText()
+    private void UpdateUI()
     {
-        ScoreText.text = "SCORE: " + score.ToString();
+        scoreText.text = $"SCORE: {score}";
+        highScoreText.text = $"HIGHSCORE: {highScore}";
     }
 }
