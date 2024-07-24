@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float speed = 250f;
+    private const float Speed = 250f;
     public GameObject lazerShot;
     public Transform lazerGun;
     private float nextShotTime;
