@@ -21,15 +21,15 @@ public class ScoreManager : MonoBehaviour
         if (other.CompareTag("lazerShot"))
         {
             score += 5;
-            // score += enemy.health;
+            //score += enemy.health;
             UpdateScoreText();
             
-            // if (score > highscore)
-            // {
-                // highscore = score;
-                // PlayerPrefs.SetFloat(highScoreKey, highscore);
-                // HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
-            // }
+            if (score > highscore)
+            {
+                highscore = score;
+                PlayerPrefs.SetFloat(highScoreKey, highscore);
+                HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
+            }
         }
     }
 
