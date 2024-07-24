@@ -1,7 +1,6 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,30 +10,28 @@ public class ObjectPool : MonoBehaviour
     public BulletControllerEnemy bulletPrefabEnemy;
     public Enemy PrefabEnemy;
     
-    public Dictionary<Type, Queue<IPoolable>> playerPoolDictionary = new Dictionary<Type, Queue<IPoolable>>();
-    public Dictionary<Type, Queue<IPoolable>> enemyPoolDictionary = new Dictionary<Type, Queue<IPoolable>>();
+    private Dictionary<Type, Queue<IPoolable>> poolDictionary = new Dictionary<Type, Queue<IPoolable>>();
 
     public void Start()
     {
-        PrePool<BulletControllerPlayer>(bulletPrefabPlayer, 200, playerPoolDictionary);
-        PrePool<BulletControllerEnemy>(bulletPrefabEnemy, 200, enemyPoolDictionary);
-        PrePool<Enemy>(PrefabEnemy, 50, enemyPoolDictionary);
+        PrePool(bulletPrefabPlayer, 200);
+        PrePool(bulletPrefabEnemy, 200);
+        PrePool(prefabEnemy, 50);
     }
 
-    public void PrePool<T>(T prefab, int count, Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
+    private void PrePool<T>(T prefab, int count) where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (!poolDict.ContainsKey(type))
+        if (!poolDictionary.ContainsKey(type))
         {
             Queue<IPoolable> objectPool = new Queue<IPoolable>();
             for (int i = 0; i < count; i++)
             {
-                T obj = GameObject.Instantiate(prefab) as T;
+                T obj = Instantiate(prefab);
                 obj.gameObject.SetActive(false);
                 objectPool.Enqueue(obj);
             }
-
-            poolDict.Add(type, objectPool);
+            poolDictionary.Add(type, objectPool);
         }
     }
 
