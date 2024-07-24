@@ -25,15 +25,16 @@ public class ScoreManager : MonoBehaviour
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
             {
-                score += enemy.health;
-            }
-            UpdateScoreText();
-            
-            if (score > highscore)
-            {
-                highscore = score;
-                PlayerPrefs.SetFloat(highScoreKey, highscore);
-                HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
+                score += 5;
+                // score += enemy.health;
+                UpdateScoreText();
+                
+                if (score > highscore)
+                {
+                    highscore = score;
+                    PlayerPrefs.SetFloat(highScoreKey, highscore);
+                    HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
+                }
             }
         }
     }
