@@ -1,10 +1,6 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerSelect : MonoBehaviour
@@ -16,6 +12,7 @@ public class PlayerSelect : MonoBehaviour
     {
         index = PlayerPrefs.GetInt("SelectPlayer", 0);
         characters = new GameObject[transform.childCount];
+        
         for (int i = 0; i < transform.childCount; i++)
         {
             characters[i] = transform.GetChild(i).gameObject;
@@ -24,31 +21,33 @@ public class PlayerSelect : MonoBehaviour
         {
             go.SetActive(false);
         }
-        characters[index].SetActive(true);
+        
+        SetActiveCharacter(index);
     }
 
     public void SelectLeft()
     {
-        characters[index].SetActive(false);
-        index--;
-        if (index < 0)
-        {
-            index = characters.Length - 1;
-        }
-
-        characters[index].SetActive(true);
+        ChangeSelection(-1);
     }
 
     public void SelectRight()
     {
-        characters[index].SetActive(false);
-        index++;
-        if (index == characters.Length)
-        {
-            index = 0;
-        }
+        ChangeSelection(1);
+    }
 
-        characters[index].SetActive(true);
+    private void ChangeSelection(int direction)
+    {
+        SetActiveCharacter(index);
+        index = (index + direction + characters.Length) % characters.Length; // Обеспечивает цикличность
+        SetActiveCharacter(index);
+    }
+
+    private void SetActiveCharacter(int activeIndex)
+    {
+        foreach (GameObject character in characters)
+            character.SetActive(false);
+        
+        characters[activeIndex].SetActive(true);
     }
 
     public void StartScene()
@@ -56,4 +55,3 @@ public class PlayerSelect : MonoBehaviour
         PlayerPrefs.SetString("SelectedShip", characters[index].name);
         SceneManager.LoadScene("Game");
     }
-}
