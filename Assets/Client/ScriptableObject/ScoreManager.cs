@@ -1,25 +1,21 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private Text ScoreText;
     [SerializeField] private Text HighScoreText;
     
-    public float score = 0f;
-    public float highscore = 0f;
+    public float score;
+    public float highscore;
     private string highScoreKey = "HighScore";
 
     public void Start()
     {
-        highscore = PlayerPrefs.GetFloat(highScoreKey, 0f);
-        UpdateScoreText();
+        highScore = PlayerPrefs.GetFloat(HighScoreKey, 0f);
+        UpdateUI();
     }
 
     private void OnTriggerEnter(Collider other)
