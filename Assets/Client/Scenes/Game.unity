@@ -4079,6 +4079,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 502305671, guid: 4575180d6a22e05488b414802068c65d, type: 3}
+      propertyPath: m_TagString
+      value: bar
+      objectReference: {fileID: 0}
     - target: {fileID: 502305672, guid: 4575180d6a22e05488b414802068c65d, type: 3}
       propertyPath: m_SizeDelta.x
       value: 4.8

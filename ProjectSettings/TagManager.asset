@@ -18,6 +18,7 @@ TagManager:
   - GameOverMenu
   - GameBaundary
   - PlayerController
+  - bar
   layers:
   - Default
   - TransparentFX
