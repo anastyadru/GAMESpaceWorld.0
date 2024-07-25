@@ -1630,7 +1630,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 553763044}
-  oldVolume: 0
 --- !u!114 &553763044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4124,6 +4123,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 412449042792295088, guid: 4575180d6a22e05488b414802068c65d, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 963194227}
     - target: {fileID: 3627337302967964834, guid: 4575180d6a22e05488b414802068c65d, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -4411,7 +4414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58a0872c73251446bfb437db604847f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseGame: 0
   pauseGameMenu: {fileID: 1431068189}
 --- !u!1 &1311034866
 GameObject:
@@ -4859,7 +4861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1277018345}
   currentWave: 0
-  waveSizes: 03000000050000000400000006000000080000000c00000008000000
+  waveSizes: 03000000050000000400000006000000080000000900000008000000
   enemyHealthMultiplier: 1.05
   remainingEnemies: 0
   enemyHealth: {fileID: 1277018346}
