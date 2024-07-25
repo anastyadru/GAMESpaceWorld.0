@@ -15,8 +15,8 @@ public class ObjectPool : MonoBehaviour
 
     public void Start()
     {
-        PrePool<BulletControllerPlayer>(bulletPrefabPlayer, 200, playerPoolDictionary);
-        PrePool<BulletControllerEnemy>(bulletPrefabEnemy, 200, enemyPoolDictionary);
+        PrePool<BulletControllerPlayer>(bulletPrefabPlayer, 20, playerPoolDictionary);
+        PrePool<BulletControllerEnemy>(bulletPrefabEnemy, 20, enemyPoolDictionary);
         PrePool<Enemy>(PrefabEnemy, 50, enemyPoolDictionary);
     }
 
