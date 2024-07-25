@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     public GameObject enemyPrefab;
     
     public int currentWave = 0;
-    public int[] waveSizes = { 3, 5, 4, 6, 8, 12, 8 };
+    public int[] waveSizes = { 3, 5, 4, 6, 8, 9, 8 };
     
     public float enemyHealthMultiplier = 1.05f;
     public int remainingEnemies;
