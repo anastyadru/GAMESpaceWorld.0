@@ -4187,6 +4187,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5307529042104246375, guid: 4575180d6a22e05488b414802068c65d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5614933904475917432, guid: 4575180d6a22e05488b414802068c65d, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -4364,7 +4368,7 @@ Canvas:
   m_GameObject: {fileID: 1292857288}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 963194227}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
