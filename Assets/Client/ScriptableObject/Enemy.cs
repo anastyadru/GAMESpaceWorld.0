@@ -23,10 +23,10 @@ public class Enemy : MonoBehaviour, IPoolable
     
     private void Start()
     {
-        GenerateNewTargetPosition();
+        GenerateNewPosition();
     }
 
-    private void GenerateNewTargetPosition()
+    private void GenerateNewPosition()
     {
         targetPosition = new Vector3(UnityEngine.Random.Range(-700f, 0f), transform.position.y, transform.position.z);
     }
