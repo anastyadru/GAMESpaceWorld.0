@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour, IPoolable
     {
         if (Vector3.Distance(transform.position, targetPosition) < 10f)
         {
-            GenerateNewTargetPosition();
+            GenerateNewPosition();
         }
 
         transform.position = Vector3.Lerp(transform.position, targetPosition, smoothness * Time.deltaTime);
