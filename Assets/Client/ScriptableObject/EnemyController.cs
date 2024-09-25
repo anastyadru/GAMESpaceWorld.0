@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
             
             if (remainingEnemies == 0)
             {
-                HandleWaveCompletion();
+                EndWave();
             }
         }
     }
