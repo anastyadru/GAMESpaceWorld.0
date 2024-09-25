@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
         }
     }
     
-    private void HandleWaveCompletion()
+    private void EndWave()
     {
         currentWave++;
         if (currentWave < waveSizes.Length)
