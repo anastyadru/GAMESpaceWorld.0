@@ -34,13 +34,12 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButton("Fire1") && Time.time > nextShotTime)
         {
-            string selectedShip = PlayerPrefs.GetString("SelectedShip");
-            if (selectedShip.Contains("SpaceshipRed"))
+            if (spaceShipID == 0) // SpaceshipRed
             {
                 Shoot(1);
                 nextShotTime = Time.time + 0.1f;
             }
-            else if (selectedShip.Contains("SpaceshipBlue"))
+            else if (spaceShipID == 1) // SpaceshipBlue
             {
                 Shoot(3);
                 nextShotTime = Time.time + 0.2f;
