@@ -18,11 +18,6 @@ public class PlayerSelect : MonoBehaviour
             characters[i] = transform.GetChild(i).gameObject;
         }
 
-        foreach (GameObject go in characters)
-        {
-            go.SetActive(false);
-        }
-
         SetActiveCharacter(index);
     }
 
@@ -55,7 +50,7 @@ public class PlayerSelect : MonoBehaviour
 
     public void StartScene()
     {
-        PlayerPrefs.SetString("SelectedShip", characters[index].name);
+        PlayerPrefs.SetInt("SelectPlayer", index);
         SceneManager.LoadScene("Game");
     }
 }
