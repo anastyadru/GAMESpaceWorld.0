@@ -9,6 +9,13 @@ public class Player : MonoBehaviour
     public Transform lazerGun;
     private float nextShotTime;
     public int health = 100;
+    
+    private int spaceShipID;
+    
+    void Awake()
+    {
+        spaceShipID = PlayerPrefs.GetInt("SelectPlayer");
+    }
 
     void Update()
     {
