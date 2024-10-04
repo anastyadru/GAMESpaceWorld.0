@@ -20,7 +20,7 @@ public class ObjectPool : MonoBehaviour
     {
         PrePool<BulletControllerPlayer>(bulletPrefabPlayer, initialPoolSize, playerPoolDictionary);
         PrePool<BulletControllerEnemy>(bulletPrefabEnemy, initialPoolSize, enemyPoolDictionary);
-        PrePool<Enemy>(PrefabEnemy, 10, enemyPoolDictionary);
+        PrePool<Enemy>(PrefabEnemy, 50, enemyPoolDictionary);
     }
 
     public void PrePool<T>(T prefab, int count, Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
