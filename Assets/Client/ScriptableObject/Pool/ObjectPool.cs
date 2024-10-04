@@ -13,14 +13,14 @@ public class ObjectPool : MonoBehaviour
     public Dictionary<Type, Queue<IPoolable>> playerPoolDictionary = new Dictionary<Type, Queue<IPoolable>>();
     public Dictionary<Type, Queue<IPoolable>> enemyPoolDictionary = new Dictionary<Type, Queue<IPoolable>>();
     
-    public int initialPoolSize = 20; // Начальный размер пула
+    public int initialPoolSize = 50; // Начальный размер пула
     public int maxPoolSize = 100; // Максимальный размер пула
     
     public void Start()
     {
         PrePool<BulletControllerPlayer>(bulletPrefabPlayer, initialPoolSize, playerPoolDictionary);
         PrePool<BulletControllerEnemy>(bulletPrefabEnemy, initialPoolSize, enemyPoolDictionary);
-        PrePool<Enemy>(PrefabEnemy, 50, enemyPoolDictionary);
+        PrePool<Enemy>(PrefabEnemy, 10, enemyPoolDictionary);
     }
 
     public void PrePool<T>(T prefab, int count, Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
