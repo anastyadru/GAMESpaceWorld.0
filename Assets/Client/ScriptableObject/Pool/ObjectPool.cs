@@ -50,7 +50,16 @@ public class ObjectPool : MonoBehaviour
                 // Если пул пустой, создаем новый объект до максимального размера
                 if (poolDict[type].Count < maxPoolSize)
                 {
-                    PrePool(Instantiate((T)Activator.CreateInstance(type)), 1, poolDict);
+                    // Получаем префаб для создания нового объекта
+                    T prefab = null;
+                    if (type == typeof(BulletControllerPlayer)) prefab = bulletPrefabPlayer as T;
+                    else if (type == typeof(BulletControllerEnemy)) prefab = bulletPrefabEnemy as T;
+                    else if (type == typeof(Enemy)) prefab = PrefabEnemy as T;
+
+                    if (prefab != null)
+                    {
+                        PrePool(prefab, 1, poolDict);
+                    }
                 }
             }
 
