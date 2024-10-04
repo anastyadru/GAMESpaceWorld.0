@@ -4456,7 +4456,7 @@ MonoBehaviour:
   bulletPrefabEnemy: {fileID: 1607486792, guid: d9fa24887c9ea9f4888336859eb2ab70, type: 3}
   PrefabEnemy: {fileID: 1277018350}
   initialPoolSize: 35
-  maxPoolSize: 100
+  maxPoolSize: 80
 --- !u!4 &1311034868
 Transform:
   m_ObjectHideFlags: 0
