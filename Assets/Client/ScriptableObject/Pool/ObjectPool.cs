@@ -31,7 +31,7 @@ public class ObjectPool : MonoBehaviour
             Queue<IPoolable> objectPool = new Queue<IPoolable>();
             for (int i = 0; i < count; i++)
             {
-                T obj = GameObject.Instantiate(prefab) as T;
+                T obj = Instantiate(prefab);
                 obj.gameObject.SetActive(false);
                 objectPool.Enqueue(obj);
             }
