@@ -15,18 +15,19 @@ public class ObjectPool : MonoBehaviour
     
     public int initialPoolSize = 50; // Начальный размер пула
     public int maxPoolSize = 100; // Максимальный размер пула
+    public int increaseAmount = 10; // Количество объектов для увеличения пула
     
     public void Start()
     {
-        PrePool<BulletControllerPlayer>(bulletPrefabPlayer, initialPoolSize, playerPoolDictionary);
-        PrePool<BulletControllerEnemy>(bulletPrefabEnemy, initialPoolSize, enemyPoolDictionary);
-        PrePool<Enemy>(PrefabEnemy, 10, enemyPoolDictionary);
+        PrePool<BulletControllerPlayer>(bulletPrefabPlayer, initialPoolSize);
+        PrePool<BulletControllerEnemy>(bulletPrefabEnemy, initialPoolSize);
+        PrePool<Enemy>(prefabEnemy, 10);
     }
 
-    public void PrePool<T>(T prefab, int count, Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
+    private void PrePool<T>(T prefab, int count) where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (!poolDict.ContainsKey(type))
+        if (!poolDictionary.ContainsKey(type))
         {
             Queue<IPoolable> objectPool = new Queue<IPoolable>();
             for (int i = 0; i < count; i++)
@@ -36,70 +37,67 @@ public class ObjectPool : MonoBehaviour
                 objectPool.Enqueue(obj);
             }
 
-            poolDict.Add(type, objectPool);
+            poolDictionary.Add(type, objectPool);
+            poolSizes.Add(type, count);
         }
     }
 
-    public T Get<T>(Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
+
+    public T Get<T>() where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (poolDict.ContainsKey(type))
+        
+        if (poolDictionary.ContainsKey(type))
         {
-            if (poolDict[type].Count == 0)
+            if (poolDictionary[type].Count == 0)
             {
                 // Если пул пустой, создаем новый объект до максимального размера
-                if (poolDict[type].Count < maxPoolSize)
+                if (poolSizes[type] < maxPoolSize)
                 {
-                    // Получаем префаб для создания нового объекта
-                    T prefab = null;
-                    if (type == typeof(BulletControllerPlayer)) prefab = bulletPrefabPlayer as T;
-                    else if (type == typeof(BulletControllerEnemy)) prefab = bulletPrefabEnemy as T;
-                    else if (type == typeof(Enemy)) prefab = PrefabEnemy as T;
-
-                    if (prefab != null)
-                    {
-                        PrePool(prefab, 1, poolDict);
-                    }
+                    int toAdd = Math.Min(maxPoolSize - poolSizes[type], increaseAmount); // Добавляем по increaseAmount объектов
+                    PrePool(Instantiate(poolDictionary[type].Peek() as T), toAdd); // Используем существующий префаб
                 }
             }
 
-            if (poolDict[type].Count > 0)
+            if (poolDictionary[type].Count > 0)
             {
-                IPoolable obj = poolDict[type].Dequeue();
+                IPoolable obj = poolDictionary[type].Dequeue();
+                obj.gameObject.SetActive(true); // Активируем объект перед использованием
                 return (T)obj;
             }
         }
 
-        return null;
+        return null; // Возвращаем null, если нет доступных объектов
     }
 
-    public void Release<T>(T poolableObject, Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
+    public void Release<T>(T poolableObject) where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (poolDict.ContainsKey(type))
+        if (poolDictionary.ContainsKey(type))
         {
-            Queue<IPoolable> objectPool = poolDict[type];
-            objectPool.Enqueue(poolableObject);
+            poolDictionary[type].Enqueue(poolableObject);
             poolableObject.OnRelease();
+            poolableObject.gameObject.SetActive(false); // Деактивируем объект при возврате в пул
         }
     }
+    
     public BulletControllerPlayer GetPlayerBullet()
     {
-        return Get<BulletControllerPlayer>(playerPoolDictionary);
+        return Get<BulletControllerPlayer>();
     }
 
     public void ReleasePlayerBullet(BulletControllerPlayer bullet)
     {
-        Release(bullet, playerPoolDictionary);
+        Release(bullet);
     }
 
     public BulletControllerEnemy GetEnemyBullet()
     {
-        return Get<BulletControllerEnemy>(enemyPoolDictionary);
+        return Get<BulletControllerEnemy>();
     }
 
     public void ReleaseEnemyBullet(BulletControllerEnemy bullet)
     {
-        Release(bullet, enemyPoolDictionary);
+        Release(bullet);
     }
 }
