@@ -43,12 +43,24 @@ public class ObjectPool : MonoBehaviour
     public T Get<T>(Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (poolDict.ContainsKey(type) && poolDict[type].Count > 0)
+        if (poolDict.ContainsKey(type))
         {
-            IPoolable obj = poolDict[type].Dequeue();
-            return (T)obj;
+            if (poolDict[type].Count == 0)
+            {
+                // Если пул пустой, создаем новый объект до максимального размера
+                if (poolDict[type].Count < maxPoolSize)
+                {
+                    PrePool(Instantiate((T)Activator.CreateInstance(type)), 1, poolDict);
+                }
+            }
+
+            if (poolDict[type].Count > 0)
+            {
+                IPoolable obj = poolDict[type].Dequeue();
+                return (T)obj;
+            }
         }
-    
+
         return null;
     }
 
