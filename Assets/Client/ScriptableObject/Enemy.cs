@@ -66,5 +66,6 @@ public class Enemy : MonoBehaviour, IPoolable
     public void OnRelease()
     {
         gameObject.SetActive(false);
+        EnemyController.Instance.DeductEnemy();
     }
 }
