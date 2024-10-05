@@ -21,18 +21,14 @@ public class EnemyController : MonoBehaviour
         GenerateWave(waveSizes[currentWave], transform.position, 1.0f);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void DeductEnemy()
     {
-        if (other.CompareTag("lazerShot"))
+        enemyHealth.TakeDamage();
+        --remainingEnemies;
+        
+        if (remainingEnemies == 0)
         {
-            Destroy(other.gameObject);
-            enemyHealth.TakeDamage();
-            remainingEnemies--;
-            
-            if (remainingEnemies == 0)
-            {
-                EndWave();
-            }
+            EndWave();
         }
     }
     
