@@ -15,6 +15,13 @@ public class EnemyController : MonoBehaviour
     public int remainingEnemies;
     public HealthManagerEnemy enemyHealth;
     public Image bar;
+    
+    public static EnemyController Instance;
+    
+    void Awake()
+    {
+        Instance = this;
+    }
 
     public void Start()
     {
