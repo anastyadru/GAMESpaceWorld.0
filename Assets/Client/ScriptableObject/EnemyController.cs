@@ -62,6 +62,9 @@ public class EnemyController : MonoBehaviour
             HealthManagerEnemy enemyHealthComponent = enemy.GetComponent<HealthManagerEnemy>();
             enemyHealthComponent.bar = bar;
             enemyHealthComponent.fill = initialEnemyHealth;
+            
+            Enemy enemyScript = enemy.GetComponent<Enemy>();
+            enemyScript.health = Mathf.RoundToInt(initialEnemyHealth);
         }
     }
     
