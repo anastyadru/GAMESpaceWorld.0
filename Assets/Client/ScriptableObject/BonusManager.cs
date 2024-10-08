@@ -10,6 +10,27 @@ public class BonusManager : MonoBehaviour
     public float bonus = 0f;
     private bool isUltimateReady = false;
     
+    private static BonusManager instance;
+
+    public static BonusManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<BonusManager>();
+
+                if (instance == null)
+                {
+                    GameObject singletonObject = new GameObject();
+                    instance = singletonObject.AddComponent<BonusManager>();
+                    singletonObject.name = typeof(BonusManager).ToString() + " (Singleton)";
+                }
+            }
+            return instance;
+        }
+    }
+    
     public void Start()
     {
         UpdateBonusText();
