@@ -63,6 +63,24 @@ public class Enemy : MonoBehaviour, IPoolable
         }
     }
     
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log($"Enemy took {damage} damage. Health now: {health}");
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        ScoreManager.Instance.AddScore(100);
+        Debug.Log("Enemy died.");
+        OnRelease();
+    }
+
     public void OnRelease()
     {
         gameObject.SetActive(false);
