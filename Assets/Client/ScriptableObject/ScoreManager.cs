@@ -41,7 +41,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         instance = this;
-        DontDestroyOnLoad(gameObject); // Не уничтожать объект при загрузке новой сцены
+        DontDestroyOnLoad(gameObject);
     }
 
     public void Start()
