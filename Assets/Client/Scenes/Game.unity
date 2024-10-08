@@ -4282,7 +4282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefabPlayer: {fileID: 665375479, guid: e804b69cd4d3e6a4285c92db9ed34cf2, type: 3}
   bulletPrefabEnemy: {fileID: 1607486792, guid: d9fa24887c9ea9f4888336859eb2ab70, type: 3}
-  PrefabEnemy: {fileID: 0}
+  PrefabEnemy: {fileID: 1193623656054736836, guid: 4575180d6a22e05488b414802068c65d, type: 3}
   initialPoolSize: 35
   maxPoolSize: 80
 --- !u!4 &1311034868
