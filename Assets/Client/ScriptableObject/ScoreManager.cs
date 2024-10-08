@@ -10,6 +10,27 @@ public class ScoreManager : MonoBehaviour
     
     public float score = 0f;
     public float highscore = 0f;
+    
+    private static ScoreManager instance;
+    
+    public static ScoreManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<ScoreManager>();
+
+                if (instance == null)
+                {
+                    GameObject singletonObject = new GameObject();
+                    instance = singletonObject.AddComponent<ScoreManager>();
+                    singletonObject.name = typeof(ScoreManager).ToString() + " (Singleton)";
+                }
+            }
+            return instance;
+        }
+    }
 
     public void Start()
     {
