@@ -31,6 +31,18 @@ public class ScoreManager : MonoBehaviour
             return instance;
         }
     }
+    
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject); // Не уничтожать объект при загрузке новой сцены
+    }
 
     public void Start()
     {
