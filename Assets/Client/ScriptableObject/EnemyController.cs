@@ -74,6 +74,7 @@ public class EnemyController : MonoBehaviour
         {
             enemy.SetActive(false);
         }
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 }
