@@ -8,6 +8,29 @@ public class HealthManagerEnemy : MonoBehaviour
     public float fill = 100f;
     public Image bar;
 
+    private static HealthManagerEnemy instance;
+
+    public static HealthManagerEnemy Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<HealthManagerEnemy>();
+
+                if (instance == null)
+                {
+                    GameObject singletonObject = new GameObject();
+                    instance = singletonObject.AddComponent<HealthManagerEnemy>();
+                    singletonObject.name = typeof(HealthManagerEnemy).ToString() + " (Singleton)";
+                }
+            }
+            return instance;
+        }
+    }
+    
+    
+    
     public void TakeDamage()
     {
         fill -= 20;
